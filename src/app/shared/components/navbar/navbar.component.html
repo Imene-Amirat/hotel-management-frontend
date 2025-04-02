@@ -6,8 +6,21 @@
         <a href="#">Blog</a>
         <a href="#">About Us</a>
     </div>
+
     <div class="login">
-        <button class="signup">Sign up</button>
-        <button>Login</button>
+        <!--show if not login -->
+        <ng-container *ngIf="!authService.isAuthenticated()">
+            <a routerLink="/register">
+                <button class="signup">Sign up</button>
+            </a>
+            <a routerLink="/login">
+                <button>Login</button>
+            </a>
+        </ng-container>
+
+         <!--show if login -->
+        <ng-container *ngIf="authService.isAuthenticated()">
+            <button (click)="logout()">Logout</button>
+        </ng-container>
     </div>
 </nav>

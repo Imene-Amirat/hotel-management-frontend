@@ -20,12 +20,19 @@ nav{
     position: sticky;
     top: 0;
     z-index: 1000;
-    background-color: #f1f1f1;
+    background-color: #FFFFFF ;
+    
+    background-color: white; // or your current color
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); //  subtle shadow
+    padding: 15px 30px;
+    position: sticky; // keeps it at top when scrolling
+    top: 0;
+    z-index: 1000; // makes sure it's on top of everything
 }
 
 nav a.logo{
     font-size: 33px;
-    color: #660033;
+    color: #6e005f;
     font-weight: 600;
 }
 
