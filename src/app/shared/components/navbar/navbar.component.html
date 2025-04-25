@@ -9,7 +9,7 @@
 
     <div class="login">
         <!--show if not login -->
-        <ng-container *ngIf="!authService.isAuthenticated()">
+        <ng-container *ngIf="!loggedIn">
             <a routerLink="/register">
                 <button class="signup">Sign up</button>
             </a>
@@ -18,9 +18,9 @@
             </a>
         </ng-container>
 
-         <!--show if login -->
-        <ng-container *ngIf="authService.isAuthenticated()">
-            <button (click)="logout()">Logout</button>
+        <!--show if login -->
+        <ng-container *ngIf="loggedIn">
+            <button style="background-color: rgb(250, 86, 86); color: aliceblue;" (click)="logout()">Logout</button>
         </ng-container>
     </div>
 </nav>

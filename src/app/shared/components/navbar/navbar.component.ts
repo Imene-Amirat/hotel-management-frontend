@@ -12,7 +12,21 @@ import { AuthService } from '../../../core/services/auth/auth.service';
 })
 export class NavbarComponent {
 
+  loggedIn: boolean = false;
   constructor(private router: Router, public authService: AuthService) { }
+
+  ngOnInit() {
+    this.authService.isAuthenticated().subscribe({
+      next: (res) => {
+        this.loggedIn = res.loggedIn;
+        console.log('User is authenticated:', this.loggedIn);
+      },
+      error: (err) => {
+        this.loggedIn = false;
+        console.error('Error checking authentication:', err);
+      }
+    });
+  }
 
   logout() {  
     this.authService.logout(); 

@@ -14,15 +14,15 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   //sends a POST request to the backend with the login data
-  login(credentials: any): Observable<any> {
-    return this.http.post(`${this.API_URL}/login`, credentials);
+  login(email: string, password: string): Observable<any> {
+    return this.http.post(`${this.API_URL}/login`, {email, password}, {withCredentials: true});
   }
 
-  isAuthenticated(): boolean {
-    return !!localStorage.getItem('token');
+  isAuthenticated(): Observable<any> {
+    return this.http.get(`${this.API_URL}/isAuthenticated`, {withCredentials: true});
   }
 
   logout(): void {  
-    localStorage.removeItem('token');
+    
   }
 }

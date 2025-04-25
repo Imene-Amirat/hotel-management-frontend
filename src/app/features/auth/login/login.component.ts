@@ -23,6 +23,7 @@ import { AuthService } from '../../../core/services/auth/auth.service';
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
+  //We inject FormBuilder using Angular's dependency injection
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router, private snackBar: MatSnackBar) {}
 
   loginForm = this.fb.group({
@@ -37,26 +38,36 @@ export class LoginComponent {
   });
 
   login(){
-    if (this.loginForm.valid) {
-      this.authService.login(this.loginForm.value).subscribe({
-        next: (response) => {
-          console.log('Login successful:', response);
-          this.snackBar.open('Welcome back!', 'Close', {
-            duration: 3000,
-          });
-  
-          //Redirect to homepage
-          this.router.navigate(['/']);
-        },
-        error: (err) => {
-          console.error('Login failed:', err);
-        }
-      });
-      console.log('Login data:', this.loginForm.value);
-    } else {
+    if (this.loginForm.invalid) {
       console.log('Invalid form');
-      this.loginForm.markAllAsTouched(); //shows errors
+      this.loginForm.markAllAsTouched(); //shows validation errors in UI
+      this.snackBar.open('Please fill in all required fields correctly.', 'Close', {
+        duration: 3000,
+      });
+      return;
     }
-  }
 
+    const email = this.loginForm.get('email')?.value || '';
+    const password = this.loginForm.get('password')?.value || '';
+
+    this.authService.login(email, password).subscribe({
+      next: (response) => {
+        console.log('Login successful:', response);
+        this.snackBar.open('Welcome back!', 'Close', {
+          duration: 3000,
+        });
+
+        //Redirect to homepage
+        this.router.navigate(['/']).then(() => {
+          window.location.reload();
+        });
+      },
+      error: (err) => {
+        this.snackBar.open('Login failed. Please check your credentials.', 'Close', {
+          duration: 3000,
+        });
+        console.error('Login failed:', err);
+      }
+    });
+  }
 }
