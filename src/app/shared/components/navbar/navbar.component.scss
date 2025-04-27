@@ -55,6 +55,19 @@ nav .login button.signup{
     margin-right: 14px;
 }
 
+nav .login button.logout{
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(236, 10, 10);
+    color: rgb(236, 10, 10);
+    border-radius: 20px;
+    margin-right: 14px;
+}
+
+nav .login button.logout:hover{
+    background-color: rgb(236, 10, 10);
+    color: white;
+}
+
 @media screen and (max-width: 1400px) {
     
     nav,

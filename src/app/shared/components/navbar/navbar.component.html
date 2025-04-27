@@ -1,7 +1,7 @@
 <nav>
     <a href="#" class="logo">HotelRoyal</a>
     <div class="links">
-        <a href="#">Home</a>
+        <a routerLink="/">Home</a>
         <a href="#">Features</a>
         <a href="#">Blog</a>
         <a href="#">About Us</a>
@@ -9,7 +9,7 @@
 
     <div class="login">
         <!--show if not login -->
-        <ng-container *ngIf="!loggedIn">
+        <ng-container *ngIf="!this.authService.loggedIn">
             <a routerLink="/register">
                 <button class="signup">Sign up</button>
             </a>
@@ -19,8 +19,8 @@
         </ng-container>
 
         <!--show if login -->
-        <ng-container *ngIf="loggedIn">
-            <button style="background-color: rgb(250, 86, 86); color: aliceblue;" (click)="logout()">Logout</button>
+        <ng-container *ngIf="this.authService.loggedIn">
+            <button class="logout" (click)="logout()">Logout</button>
         </ng-container>
     </div>
 </nav>
