@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 export class AuthService {
 
   private readonly API_URL = 'http://localhost:8080/api/auth'; //backend auth endpoint
+  public loggedIn: boolean = false; 
 
   //injects the HttpClient service to make requests to the backend
   constructor(private http: HttpClient) { }
@@ -22,7 +23,7 @@ export class AuthService {
     return this.http.get(`${this.API_URL}/isAuthenticated`, {withCredentials: true});
   }
 
-  logout(): void {  
-    
+  logout(): Observable<any>  {  
+    return this.http.post(`${this.API_URL}/logout`, {}, {withCredentials: true});
   }
 }

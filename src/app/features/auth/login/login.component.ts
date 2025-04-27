@@ -58,9 +58,8 @@ export class LoginComponent {
         });
 
         //Redirect to homepage
-        this.router.navigate(['/']).then(() => {
-          window.location.reload();
-        });
+        this.router.navigate(['/']);
+        this.authService.loggedIn = true; 
       },
       error: (err) => {
         this.snackBar.open('Login failed. Please check your credentials.', 'Close', {
