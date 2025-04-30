@@ -55,10 +55,11 @@ export class RegisterComponent {
     this.authService.register(username, email, password).subscribe({
       next: (response) => {
         console.log('Registration successful:', response);
-        this.snackBar.open('Registration successful! You can now log in.', 'Close', {
+        this.snackBar.open('Registration successful!', 'Close', {
           duration: 3000,
         });
         
+        this.authService.loggedIn = true;
         this.router.navigate(['/']);
       },
       error: (error) => {
