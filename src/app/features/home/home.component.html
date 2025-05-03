@@ -46,7 +46,7 @@
           <h3>{{ room.type }}</h3>
           <p>Capacity: {{ room.capacityAdults }} Adults<span *ngIf="room.capacityChildren > 0">, {{ room.capacityChildren }} Child</span></p>
           <p>Price per night: ${{ room.pricePerNight }}</p>
-          <button class="book-button">Details & Reservation →</button>
+          <button class="book-button" (click)="goToDetailsRoom(room.id)">Details & Reservation →</button>
         </div>
       </div>
     </div>

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RoomService } from '../../core/services/room/room.service';
 import { Room } from '../../shared/models/room';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class HomeComponent {
   apiUrl = 'http://localhost:8080';
   rooms: Room[] = [];
   
-  constructor(private roomService: RoomService) { }
+  constructor(private roomService: RoomService, private router: Router) { }
 
   ngOnInit() {
     this.roomService.getAllRooms().subscribe({
@@ -27,5 +28,9 @@ export class HomeComponent {
         console.error('Error fetching rooms:', err);
       }
     })
+  }
+
+  goToDetailsRoom(id: number) {
+    this.router.navigate(['/detailsRoom', id]);
   }
 }
