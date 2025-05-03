@@ -40,32 +40,12 @@
     <h2>Our Rooms</h2>
 
     <div class="room-cards">
-      <div class="room-card">
-        <img src="assets/images/room1.webp" alt="Room 1"/>
+      <div class="room-card" *ngFor="let room of rooms">
+        <img [src]="apiUrl + room.imageUrl" [alt]="room.type"/>
         <div class="room-info">
-          <h3>Deluxe Room</h3>
-          <p>Capacity: 2 Adults, 1 Child</p>
-          <p>Price per night: $200</p>
-          <button class="book-button">Details & Reservation →</button>
-        </div>
-      </div>
-
-      <div class="room-card">
-        <img src="assets/images/room2.webp" alt="Room 2"/>
-        <div class="room-info">
-          <h3>Standard</h3>
-          <p>Capacity: 2 Adults</p>
-          <p>Price per night: $80</p>
-          <button class="book-button">Details & Reservation →</button>
-        </div>
-      </div>
-
-      <div class="room-card">
-        <img src="assets/images/room3.webp" alt="Room 3"/>
-        <div class="room-info">
-          <h3>Suite</h3>
-          <p>Capacity: 3 Adults, 1 Child</p>
-          <p>Price per night: 250€</p>
+          <h3>{{ room.type }}</h3>
+          <p>Capacity: {{ room.capacityAdults }} Adults<span *ngIf="room.capacityChildren > 0">, {{ room.capacityChildren }} Child</span></p>
+          <p>Price per night: ${{ room.pricePerNight }}</p>
           <button class="book-button">Details & Reservation →</button>
         </div>
       </div>
