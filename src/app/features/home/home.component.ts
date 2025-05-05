@@ -31,6 +31,6 @@ export class HomeComponent {
   }
 
   goToDetailsRoom(id: number) {
-    this.router.navigate(['/detailsRoom', id]);
+    this.router.navigate(['/rooms', id]);
   }
 }

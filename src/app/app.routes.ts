@@ -6,5 +6,5 @@ import { RoomDetailsComponent } from './features/room-details/room-details.compo
 export const routes: Routes = [
     ...authRoutes,   //take everything inside authRoutes array and insert it here
     {path: '', component: HomeComponent}, //default route
-    {path: 'detailsRoom/:id', component: RoomDetailsComponent}
+    {path: 'rooms/:id', component: RoomDetailsComponent}
 ];
