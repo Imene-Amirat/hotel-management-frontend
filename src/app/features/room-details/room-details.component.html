@@ -2,26 +2,15 @@
   <!-- HEADER SECTION -->
   <div class="room-header">
     <div class="room-thumbnail">
-      <img src="assets/images/room1.webp" alt="Room Thumbnail">
+      <img [src]="apiUrl + room?.imageUrl" [alt]="room?.type">
     </div>
     <div class="room-info-header">
-      <h1>Deluxe Room</h1>
-      <p class="room-type"><i class="fas fa-ruler-combined"></i> 30m² • <i class="fas fa-bed"></i> King Bed</p>
-      <!-- <div class="room-details-line">
-        <i class="fas fa-ruler-combined"></i>
-        <span>30m²</span>
-      </div>
-    
-      <div class="room-details-line">
-        <i class="fas fa-bed"></i>
-        <span>King Bed</span>
-      </div>  -->
-    
-      <p class="price">$200 per night</p>
-    
+      <h1>{{ room?.type }}</h1>
+      <p class="room-type"><i class="fas fa-ruler-combined"></i> {{ room?.roomSize }}m²   <i class="fas fa-bed"></i> {{ room?.bedType }}</p>
+      <p class="price">${{ room?.pricePerNight }} per night</p>
       <div class="availability">
-        <span class="available">Available</span>
-        <!-- For not available: <span class="not-available">Not Available</span> -->
+        <span class="available" *ngIf="room?.available"><i class="fa-solid fa-check"></i> Available</span>
+        <span class="not-available" *ngIf="!room?.available"><i class="fa-solid fa-xmark"></i> Not Available</span>
       </div>
     </div>
   </div>
@@ -32,40 +21,39 @@
     <div class="room-details">
       <h3>Description</h3>
       <p>
-        Spacious deluxe room with a king-size bed, balcony, and private bathroom.
-        Includes modern amenities and a beautiful sea view.
+        {{ room?.description }}
       </p>
 
       <h3>Capacity</h3>
-      <p>2 Adults<span>, 1 Child</span></p>
+      <p><i class="fa-solid fa-users"></i> {{ room?.capacityAdults }} Adults<span *ngIf="room?.capacityChildren">, {{ room?.capacityChildren }} Child</span></p>
 
       <h3>Features & Amenities</h3>
       <div class="features-grid">
-        <div class="feature-item" >
+        <div class="feature-item" *ngIf="room?.hasWifi">
           <i class="fas fa-wifi"></i>
           <span>Wifi</span>
         </div>
-        <div class="feature-item" >
+        <div class="feature-item" *ngIf="room?.hasAirConditioning">
           <i class="fas fa-snowflake"></i>
           <span>Air Conditioning</span>
         </div>
-        <div class="feature-item" >
+        <div class="feature-item" *ngIf="room?.hasTv">
           <i class="fas fa-tv"></i>
           <span>TV</span>
         </div>
-        <div class="feature-item" >
+        <div class="feature-item" *ngIf="room?.hasBreakfastIncluded">
           <i class="fas fa-coffee"></i>
           <span>Breakfast Included</span>
         </div>
-        <div class="feature-item">
+        <div class="feature-item" *ngIf="room?.hasBalcony">
           <i class="fas fa-umbrella-beach"></i>
           <span>Balcony</span>
         </div>
-        <div class="feature-item" >
+        <div class="feature-item" *ngIf="room?.hasTerrace">
           <i class="fas fa-tree"></i>
           <span>Terrace</span>
         </div>
-        <div class="feature-item" >
+        <div class="feature-item" *ngIf="room?.hasKitchen">
           <i class="fas fa-utensils"></i>
           <span>Kitchen</span>
         </div>
@@ -82,11 +70,6 @@
         <label for="checkOut">Check-Out</label>
         <input type="date" id="checkOut">
 
-        <div class="availability-status">
-          <span class="available">Available</span>
-          <!-- For not available: <span class="not-available">Not Available</span> -->
-        </div>
-
         <button type="submit" class="book-now">Book Now</button>
       </form>
     </div>
@@ -96,11 +79,8 @@
   <div class="gallery-section">
     <h3>Gallery</h3>
     <div class="gallery-grid">
-      <img src="assets/images/room1.webp" alt="Gallery Image 1">
-      <img src="assets/images/room2.webp" alt="Gallery Image 2">
-      <img src="assets/images/room3.webp" alt="Gallery Image 3">
-      <img src="assets/images/room1.webp" alt="Gallery Image 4">
-      <img src="assets/images/room3.webp" alt="Gallery Image 5">
+      <p *ngIf="roomGallery.length === 0">No images available for this room.</p>
+      <img *ngFor="let image of roomGallery" [src]="apiUrl + image.imageUrl" [alt]="image.imageUrl">
     </div>
   </div>
 </div>

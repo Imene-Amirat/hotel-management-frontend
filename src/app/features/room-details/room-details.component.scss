@@ -32,30 +32,26 @@
       .room-type {
         //color: #555;
         margin-bottom: 20px;
-      }
-      .room-details-line {
-        display: flex;
-        align-items: center;
-        margin-bottom: 10px;
-        color: #555;
-        font-size: 0.95rem;
-      
-        i {
-          margin-right: 8px;
-          color: #6b005b; // your main color
-        }
-      }      
+      }     
       .price {
         font-size: 1.3rem;
         color: #222;
-        margin-bottom: 10px;
+        margin-bottom: 20px;
       }
       .availability {
         .available {
+          background-color: white;;
+          border: 1px solid green;
+          border-radius: 20px;
+          padding: 5px 10px;
           color: green;
           font-weight: bold;
         }
         .not-available {
+          background-color: white;
+          border: 1px solid red;
+          border-radius: 20px;
+          padding: 5px 10px;
           color: red;
           font-weight: bold;
         }
@@ -67,6 +63,7 @@
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
+    align-items: flex-start;
 
     .room-details {
       flex: 2;
@@ -110,6 +107,7 @@
       h3 {
         color: #6b005b;
         margin-bottom: 15px;
+        text-align: center;
       }
 
       form {
@@ -127,20 +125,8 @@
           border-radius: 4px;
         }
 
-        .availability-status {
-          margin: 15px 0;
-          .available {
-            color: green;
-            font-weight: bold;
-          }
-          .not-available {
-            color: red;
-            font-weight: bold;
-          }
-        }
-
         .book-now {
-          margin-top: 10px;
+          margin-top: 18px;
           padding: 10px;
           background-color: #6b005b;
           color: #fff;
