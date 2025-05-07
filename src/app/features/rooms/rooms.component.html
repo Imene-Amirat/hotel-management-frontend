@@ -1,0 +1,19 @@
+<div class="rooms-page">
+  <h1 class="page-title">Our Rooms</h1>
+
+  <div class="rooms-grid">
+    <div class="room-card" *ngFor="let room of rooms" [routerLink]="['/rooms', room.id]">
+      <img [src]="apiUrl + room.imageUrl" [alt]="room.type">
+      <div class="room-info">
+        <h3>{{ room.type }}</h3>
+        <p><i class="fas fa-ruler-combined"></i> {{ room.roomSize }}m²</p>
+        <p><i class="fas fa-bed"></i> {{ room.bedType }} Bed</p>
+        <p><i class="fa-solid fa-users"></i> {{ room.capacityAdults }} Adults<span *ngIf="room.capacityChildren > 0">, {{ room.capacityChildren }} Children</span></p>
+        <div class="price-row">
+          <p class="price">${{ room.pricePerNight }} / night</p>
+        </div>
+        <button class="details-btn" (click)="goToDetailsRoom(room.id)">View Details →</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -4,33 +4,34 @@ import { Room } from '../../shared/models/room';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 
-
 @Component({
-  selector: 'app-home',
+  selector: 'app-rooms',
   standalone: true,
   imports: [CommonModule, RouterModule],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  templateUrl: './rooms.component.html',
+  styleUrl: './rooms.component.scss'
 })
-export class HomeComponent {
-  apiUrl = 'http://localhost:8080';
+export class RoomsComponent {
   rooms: Room[] = [];
-  
+  apiUrl = 'http://localhost:8080/';
+
   constructor(private roomService: RoomService, private router: Router) { }
 
   ngOnInit() {
     this.roomService.getAllRooms().subscribe({
       next: (res) => {
-        console.log('Rooms:', res);
+        console.log(res);
         this.rooms = res;
       },
-      error: (err) => {
-        console.error('Error fetching rooms:', err);
+      error: (error) => {
+        console.error('Error fetching rooms:', error);
       }
-    })
+
+    });
   }
 
   goToDetailsRoom(id: number) {
     this.router.navigate(['/rooms', id]);
   }
+
 }
