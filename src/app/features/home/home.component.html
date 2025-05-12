@@ -41,7 +41,7 @@
 
     <p *ngIf="rooms.length === 0">No rooms available for this now</p>
     <div class="room-cards">
-      <div class="room-card" *ngFor="let room of rooms">
+      <div class="room-card" *ngFor="let room of rooms | slice:0:3">
         <img [src]="apiUrl + room.imageUrl" [alt]="room.type"/>
         <div class="room-info">
           <h3>{{ room.type }}</h3>

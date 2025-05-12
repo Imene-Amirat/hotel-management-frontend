@@ -63,12 +63,18 @@
     <!-- RIGHT: Booking Box -->
     <div class="booking-box">
       <h3>Book This Room</h3>
-      <form>
+      <form [formGroup]="bookingForm" (ngSubmit)="checkRoomAvailability()">
         <label for="checkIn">Check-In</label>
-        <input type="date" id="checkIn">
+        <input type="date" id="checkIn" formControlName="checkIn" required>
+        <mat-error style="color: red;" *ngIf="bookingForm.get('checkIn')?.hasError('required') && (bookingForm.get('checkIn')?.touched || bookingForm.get('checkIn')?.dirty)">
+          Check-In date is required
+        </mat-error>
 
         <label for="checkOut">Check-Out</label>
-        <input type="date" id="checkOut">
+        <input type="date" id="checkOut" formControlName="checkOut" required>
+        <mat-error style="color: red;" *ngIf="bookingForm.get('checkOut')?.hasError('required') && (bookingForm.get('checkOut')?.touched || bookingForm.get('checkOut')?.dirty)">
+          Check-Out date is required
+        </mat-error>
 
         <button type="submit" class="book-now">Book Now</button>
       </form>

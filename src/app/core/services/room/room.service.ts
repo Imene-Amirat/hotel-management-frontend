@@ -23,4 +23,9 @@ export class RoomService {
   getRoomGallery(id: number): Observable<RoomGallery[]> {
     return this.http.get<RoomGallery[]>(`${this.API_URL}/${id}/gallery`, {withCredentials: true});
   }
+
+  checkRoomAvailability(payload: { roomTypeId: number, checkIn: string, checkOut: string }): Observable<any> {
+    return this.http.post('http://localhost:8080/api/reservations/check-availability', payload, {withCredentials: true});
+  }
+
 }
