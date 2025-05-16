@@ -1,0 +1,102 @@
+<div class="reservation-page">
+  <!-- Top Progress Stepper -->
+  <div class="stepper-booking">
+    <div class="step done">
+      <div class="circle">&#10003;</div>
+      <span>Votre sélection</span>
+    </div>
+    <div class="line"></div>
+    <div class="step active">
+      <div class="circle">2</div>
+      <span>Vos informations</span>
+    </div>
+    <div class="line"></div>
+    <div class="step">
+      <div class="circle">3</div>
+      <span>Finaliser la réservation</span>
+    </div>
+  </div>
+
+  <div class="content-wrapper">
+    <!-- LEFT SIDE: SUMMARY -->
+    <div class="summary-box">
+      <h4>Les détails de votre réservation</h4>
+
+      <div class="check-row">
+        <div>
+          <strong>Arrivée</strong>
+          <p>sam. 18 oct. 2025</p>
+          <p class="sub-text">15:00 – 23:00</p>
+        </div>
+        <div>
+          <strong>Départ</strong>
+          <p>dim. 19 oct. 2025</p>
+          <p class="sub-text">Jusqu’à 11:00</p>
+        </div>
+      </div>
+
+      <p><strong>Durée totale du séjour :</strong> 1 nuit</p>
+      <p><strong>Vous avez sélectionné :</strong><br>1 chambre pour 2 adultes</p>
+
+      <a class="edit-link" href="#">Modifier la sélection</a>
+
+      <hr />
+
+      <h4>Récapitulatif du montant</h4>
+
+      <div class="price-box">
+        <div class="row">
+          <span class="label">Montant</span>
+          <span class="price-highlight">DZD 12 000</span>
+        </div>
+        <p class="sub-text">+ taxes et frais : DZD 0</p>
+        <p class="sub-text">Dans la devise de l’établissement : €80</p>
+      </div>
+    </div>
+
+
+    <!-- RIGHT SIDE: FORM -->
+    <div class="form-box">
+      <div class="login-status">✔️ Vous êtes connecté(e) — <strong>imene2004.amiratgmail.com</strong></div>
+
+      <h3>Saisissez vos coordonnées</h3>
+      <div class="info-alert">ℹ️ Vous y êtes presque ! Complétez simplement les informations requises.</div>
+
+      <form>
+        <div class="form-row">
+          <div>
+            <label>Prénom *</label>
+            <input type="text" placeholder="Imène" required />
+          </div>
+          <div>
+            <label>Nom *</label>
+            <input type="text" placeholder="Amirat" required />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="full">
+            <label>Adresse e-mail *</label>
+            <input type="email" value="imene2004.amirat@gmail.com" readonly />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="full">
+            <label>Adresse *</label>
+            <input type="text" placeholder="Rue de Paris..." required />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="full">
+            <label>Ville *</label>
+            <input type="text" placeholder="Alger" required />
+          </div>
+        </div>
+
+        <button type="submit" class="confirm-button">Finaliser la réservation</button>
+      </form>
+    </div>
+  </div>
+</div>
