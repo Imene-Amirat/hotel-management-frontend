@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RoomService } from '../../core/services/room/room.service';
 import { Room } from '../../shared/models/room';
 import { CommonModule } from '@angular/common';
@@ -10,7 +10,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
-import { ConfirmDialogService } from '../../core/services/confirm-dialog.service';
+import { ConfirmDialogService } from '../../core/services/confirm-dialog/confirm-dialog.service';
+import { AuthService } from '../../core/services/auth/auth.service';
 
 @Component({
   selector: 'app-room-details',
@@ -39,7 +40,9 @@ export class RoomDetailsComponent {
     private route: ActivatedRoute,
     private fb: FormBuilder,
     private snackBar: MatSnackBar,
-    private confirmService: ConfirmDialogService
+    private confirmService: ConfirmDialogService,
+    private authService: AuthService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -93,8 +96,21 @@ export class RoomDetailsComponent {
       next: (res) => {
         console.log('Room availability:', res);
         if (res.available) {
-          this.confirmService.ask('Are you sure you want to delete this room?').subscribe(result => {
+          this.confirmService.ask('Are you sure you want to reserve this room ?').subscribe(result => {
             if (result) {
+              this.authService.isAuthenticated().subscribe({
+                next : (res) => {
+                  if (res.loggedIn) {
+                    this.router.navigate(['/reservation/confirm']);
+                  }
+                  else {
+                    this.snackBar.open('Please login to reserve a room.', 'Close', {
+                      duration: 3000,
+                      panelClass: ['snackbar-error']
+                    });
+                  }
+                }
+              });
             }
           });
         } else {
