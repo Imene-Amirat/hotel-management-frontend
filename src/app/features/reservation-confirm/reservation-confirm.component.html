@@ -3,95 +3,107 @@
   <div class="stepper-booking">
     <div class="step done">
       <div class="circle">&#10003;</div>
-      <span>Votre sélection</span>
+      <span>Your selection</span>
     </div>
     <div class="line"></div>
     <div class="step active">
       <div class="circle">2</div>
-      <span>Vos informations</span>
+      <span>Your information</span>
     </div>
     <div class="line"></div>
     <div class="step">
       <div class="circle">3</div>
-      <span>Finaliser la réservation</span>
+      <span>Finalize the reservation</span>
     </div>
   </div>
 
   <div class="content-wrapper">
     <!-- LEFT SIDE: SUMMARY -->
     <div class="summary-box">
-      <h4>Les détails de votre réservation</h4>
+      <h4>Your booking details</h4>
 
       <div class="check-row">
         <div>
-          <strong>Arrivée</strong>
-          <p>sam. 18 oct. 2025</p>
-          <p class="sub-text">15:00 – 23:00</p>
+          <strong>Arrival</strong>
+          <p>{{ checkIn | englishDate }}</p>
+          <p class="sub-text">3:00 PM - 11:00 PM</p>
         </div>
         <div>
-          <strong>Départ</strong>
-          <p>dim. 19 oct. 2025</p>
-          <p class="sub-text">Jusqu’à 11:00</p>
+          <strong>Departure</strong>
+          <p>{{ checkOut | englishDate }}</p>
+          <p class="sub-text">Until 11:00</p>
         </div>
       </div>
 
-      <p><strong>Durée totale du séjour :</strong> 1 nuit</p>
-      <p><strong>Vous avez sélectionné :</strong><br>1 chambre pour 2 adultes</p>
+      <p><strong>Total length of stay :</strong> {{ nbNights }} night</p>
+      <p><strong>You have selected :</strong><br>1 room for {{ roomType?.capacityAdults }} adults, <span>{{ roomType?.capacityChildren }} children</span></p>
 
       <a class="edit-link" href="#">Modifier la sélection</a>
 
       <hr />
 
-      <h4>Récapitulatif du montant</h4>
+      <h4>Summary of the amount</h4>
 
       <div class="price-box">
         <div class="row">
-          <span class="label">Montant</span>
-          <span class="price-highlight">DZD 12 000</span>
+          <span class="label">Amount</span>
+          <span class="price-highlight">€ {{ totalPrice }}</span>
         </div>
-        <p class="sub-text">+ taxes et frais : DZD 0</p>
-        <p class="sub-text">Dans la devise de l’établissement : €80</p>
+        <p class="sub-text">+ taxes and fees: DZD 0</p>
+        <p class="sub-text">In the institution's currency: €80</p>
       </div>
     </div>
 
 
     <!-- RIGHT SIDE: FORM -->
     <div class="form-box">
-      <div class="login-status">✔️ Vous êtes connecté(e) — <strong>imene2004.amiratgmail.com</strong></div>
+      <div class="login-status">✔️ You are connected — <strong>{{ user?.username }}</strong></div>
 
-      <h3>Saisissez vos coordonnées</h3>
-      <div class="info-alert">ℹ️ Vous y êtes presque ! Complétez simplement les informations requises.</div>
+      <h3>Enter your details</h3>
+      <div class="info-alert">ℹ️ You're almost there! Simply fill in the required information *.</div>
 
-      <form>
+      <form [formGroup]="reservationForm" (ngSubmit)="reserve()">
         <div class="form-row">
           <div>
-            <label>Prénom *</label>
-            <input type="text" placeholder="Imène" required />
+            <label>First name *</label>
+            <input type="text" formControlName="firstName" required />
+            <mat-error style="color: red; font-size: smaller;" *ngIf="reservationForm.get('firstName')?.hasError('required') && (reservationForm.get('firstName')?.touched || reservationForm.get('firstName')?.dirty)">
+              Enter your first name
+            </mat-error>
           </div>
           <div>
-            <label>Nom *</label>
-            <input type="text" placeholder="Amirat" required />
+            <label>Last Name *</label>
+            <input type="text" formControlName="lastName" required />
+            <mat-error style="color: red; font-size: smaller;" *ngIf="reservationForm.get('lastName')?.hasError('required') && (reservationForm.get('lastName')?.touched || reservationForm.get('lastName')?.dirty)">
+              Enter your last name
+            </mat-error>
           </div>
         </div>
 
         <div class="form-row">
           <div class="full">
-            <label>Adresse e-mail *</label>
-            <input type="email" value="imene2004.amirat@gmail.com" readonly />
+            <label>E-mail addres *</label>
+            <input type="email" formControlName="email" [value]="user?.email" readonly />
           </div>
         </div>
 
         <div class="form-row">
           <div class="full">
-            <label>Adresse *</label>
-            <input type="text" placeholder="Rue de Paris..." required />
+            <label>Phone number *</label>
+            <input type="text" formControlName="phone" required />
+            <mat-error style="color: red; font-size: smaller;" *ngIf="reservationForm.get('phone')?.hasError('required') && (reservationForm.get('phone')?.touched || reservationForm.get('phone')?.dirty)">
+              Enter your phone number
+            </mat-error>
           </div>
         </div>
 
         <div class="form-row">
           <div class="full">
-            <label>Ville *</label>
-            <input type="text" placeholder="Alger" required />
+            <label>City *</label>
+            <input type="text" formControlName="city" placeholder="Alger" required />
+            <mat-error style="color: red; font-size: smaller;" *ngIf="reservationForm.get('city')?.hasError('required') && (reservationForm.get('city')?.touched || reservationForm.get('city')?.dirty)">
+              Enter your city
+            </mat-error>
           </div>
         </div>
 
