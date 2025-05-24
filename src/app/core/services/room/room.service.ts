@@ -6,7 +6,7 @@ import { RoomGallery } from '../../../shared/models/roomGallery';
 @Injectable({
   providedIn: 'root'
 })
-export class RoomService {
+export class RoomTypeService {
 
   private readonly API_URL = 'http://localhost:8080/api/rooms'; 
 
@@ -16,7 +16,7 @@ export class RoomService {
     return this.http.get(`${this.API_URL}/`, {withCredentials: true});
   }
 
-  getRoomById(id: number): Observable<any> {
+  getRoomTypeById(id: number): Observable<any> {
     return this.http.get(`${this.API_URL}/${id}`, {withCredentials: true});
   }
 
