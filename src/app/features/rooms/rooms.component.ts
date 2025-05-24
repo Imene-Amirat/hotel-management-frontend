@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { RoomService } from '../../core/services/room/room.service';
-import { Room } from '../../shared/models/room';
+import { RoomTypeService } from '../../core/services/room/room.service';
+import { RoomType } from '../../shared/models/roomType';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 
@@ -12,10 +12,10 @@ import { Router, RouterModule } from '@angular/router';
   styleUrl: './rooms.component.scss'
 })
 export class RoomsComponent {
-  rooms: Room[] = [];
+  rooms: RoomType[] = [];
   apiUrl = 'http://localhost:8080/';
 
-  constructor(private roomService: RoomService, private router: Router) { }
+  constructor(private roomService: RoomTypeService, private router: Router) { }
 
   ngOnInit() {
     this.roomService.getAllRooms().subscribe({

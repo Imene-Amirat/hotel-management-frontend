@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { RoomService } from '../../core/services/room/room.service';
-import { Room } from '../../shared/models/room';
+import { RoomTypeService } from '../../core/services/room/room.service';
+import { RoomType } from '../../shared/models/roomType';
 import { CommonModule } from '@angular/common';
 import { RoomGallery } from '../../shared/models/roomGallery';
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -31,12 +31,12 @@ import { AuthService } from '../../core/services/auth/auth.service';
 })
 export class RoomDetailsComponent {
   apiUrl = 'http://localhost:8080';
-  room: Room | null = null;
+  room: RoomType | null = null;
   roomGallery: RoomGallery[] = [];
   id = Number(this.route.snapshot.paramMap.get('id'));
 
   constructor(
-    private roomService: RoomService,
+    private roomService: RoomTypeService,
     private route: ActivatedRoute,
     private fb: FormBuilder,
     private snackBar: MatSnackBar,
@@ -46,7 +46,7 @@ export class RoomDetailsComponent {
   ) { }
 
   ngOnInit() {
-    this.roomService.getRoomById(this.id).subscribe({
+    this.roomService.getRoomTypeById(this.id).subscribe({
       next: (res) => {
         console.log('Room Details:', res);
         this.room = res; 
@@ -101,7 +101,7 @@ export class RoomDetailsComponent {
               this.authService.isAuthenticated().subscribe({
                 next : (res) => {
                   if (res.loggedIn) {
-                    this.router.navigate(['/reservation/confirm']);
+                    this.router.navigate(['/reservation/confirm'], {queryParams: payload});
                   }
                   else {
                     this.snackBar.open('Please login to reserve a room.', 'Close', {
