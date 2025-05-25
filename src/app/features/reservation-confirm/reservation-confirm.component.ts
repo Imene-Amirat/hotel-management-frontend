@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { EnglishDatePipe } from '../../shared/pipes/english-date.pipe'; 
-import { RoomTypeService } from '../../core/services/room/room.service';
+import { RoomTypeService } from '../../core/services/room-type/room-type.service';
 import { RoomType } from '../../shared/models/roomType';
 import { AuthService } from '../../core/services/auth/auth.service';
 import { User } from '../../shared/models/user';
@@ -43,8 +43,8 @@ export class ReservationConfirmComponent {
     private authService: AuthService,
     private fb: FormBuilder,
     private snackBar: MatSnackBar,
-    private reservationService: ReservationService
-
+    private reservationService: ReservationService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -98,39 +98,65 @@ export class ReservationConfirmComponent {
       return;
     }
 
-    const email = this.reservationForm.get('email')?.value || '';
-    const firstName = this.reservationForm.get('firstName')?.value || '';
-    const lastName = this.reservationForm.get('lastName')?.value || '';
-    const phone = this.reservationForm.get('phone')?.value || '';
-    const city = this.reservationForm.get('city')?.value || '';
+    const formValues = this.reservationForm.value;
 
     const reservationData = {
       userId: this.user ? this.user.id : undefined,
       checkIn: this.checkIn,
       checkOut: this.checkOut,
-      roomTypeId: this.roomTypeId,
-      firstName,
-      lastName,
-      phone,
-      city,
-      email,
+      roomId: null,
+      firstName: formValues.firstName,
+      lastName: formValues.lastName,
+      phone: formValues.phone,
+      city: formValues.city,
       totalPrice: this.calculateTotalPrice(),
       status: 'PENDING',
     };
+
+    const availabilityPayload = {
+      roomTypeId: this.roomTypeId,
+      checkIn: this.checkIn,
+      checkOut: this.checkOut
+    };
     
-    this.reservationService.createReservation(reservationData).subscribe({
-      next: (response) => {
-        console.log('Reservation successful:', response);
-        this.snackBar.open('Reservation confirmed!', 'Close', {
-          duration: 3000,
+    this.checkAvailabilityAndReserve(availabilityPayload, reservationData);
+  }
+
+  private checkAvailabilityAndReserve(payload: any, baseData: any): void {
+    this.roomTypeService.checkRoomAvailability(payload).subscribe({
+      next: (res) => {
+        if(!res.available) {
+          this.showSnack('Room is not available for the selected dates', 3000);
+          return;
+        }
+        
+        this.roomTypeService.getAvailableRoom(payload).subscribe({
+          next: (res) => {
+            baseData.roomId = res.id;
+            this.reservationService.createReservation(baseData).subscribe({
+                next: (res) => {
+                  this.showSnack('Reservation created successfully!', 3000);
+                  this.router.navigate(['/reservation/payement']);
+                },
+                error: (error) => {
+                  this.showSnack('Error creating reservation. Please try again.', 3000);
+                }
+              });
+          },
+          error: (error) => {
+            this.showSnack('Error fetching available room. Please try again.', 3000);
+          }
         });
+        
       },
-      error: (error) => { 
-        console.error('Error creating reservation:', error);
-        this.snackBar.open('Reservation failed. Please try again.', 'Close', {
-          duration: 3000,
-        });
+      error: (error) => {
+        this.showSnack('Room is not available for the selected dates', 3000);
       }
+    });
+  }
+
+  private showSnack(message: string, duration = 3000): void {
+    this.snackBar.open(message, 'Close', { duration });
   }
 
   calculateTotalPrice(): number {

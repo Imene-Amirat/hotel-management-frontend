@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RoomTypeService } from '../../core/services/room/room.service';
+import { RoomTypeService } from '../../core/services/room-type/room-type.service';
 import { RoomType } from '../../shared/models/roomType';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
