@@ -4,7 +4,7 @@ import { RoomTypeService } from '../../core/services/room-type/room-type.service
 import { RoomType } from '../../shared/models/roomType';
 import { CommonModule } from '@angular/common';
 import { RoomGallery } from '../../shared/models/roomGallery';
-import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormsModule, ReactiveFormsModule, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -34,6 +34,7 @@ export class RoomDetailsComponent {
   room: RoomType | null = null;
   roomGallery: RoomGallery[] = [];
   id = Number(this.route.snapshot.paramMap.get('id'));
+  todayString = new Date().toISOString().split('T')[0];
 
   constructor(
     private roomService: RoomTypeService,
@@ -46,6 +47,7 @@ export class RoomDetailsComponent {
   ) { }
 
   ngOnInit() {
+    
     this.roomService.getRoomTypeById(this.id).subscribe({
       next: (res) => {
         console.log('Room Details:', res);
@@ -68,10 +70,11 @@ export class RoomDetailsComponent {
     });
   }
 
-  bookingForm = this.fb.group({
-    checkIn: ['', Validators.required],
-    checkOut: ['', Validators.required]
-  });
+  bookingForm = this.fb.group(
+    {checkIn: ['', Validators.required],
+     checkOut: ['', Validators.required]},
+    {validators: dateRangeValidator()}
+  );
 
   checkRoomAvailability() {
     if (this.bookingForm.invalid) {
@@ -122,6 +125,18 @@ export class RoomDetailsComponent {
       }
     });
   }
-
-  
 }
+
+export function dateRangeValidator(): ValidatorFn {
+  return (formGroup: AbstractControl): ValidationErrors | null => {
+    const checkIn = formGroup.get('checkIn')?.value;
+    const checkOut = formGroup.get('checkOut')?.value;
+
+    if (checkIn && checkOut && new Date(checkIn) >= new Date(checkOut)) {
+      return { dateRangeInvalid: true };
+    }
+
+    return null;
+  };
+}
+
