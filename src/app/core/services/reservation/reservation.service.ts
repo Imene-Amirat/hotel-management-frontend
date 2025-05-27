@@ -12,6 +12,6 @@ export class ReservationService {
   constructor(private http: HttpClient) { }
 
   createReservation(reservationData: {}): Observable<any>{
-    return this.http.post(`${this.API_URL}`, reservationData, { withCredentials: true });
+    return this.http.post(`${this.API_URL}/`, reservationData, { withCredentials: true });
   }
 }

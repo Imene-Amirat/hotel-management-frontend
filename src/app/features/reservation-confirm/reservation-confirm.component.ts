@@ -91,7 +91,7 @@ export class ReservationConfirmComponent {
   reserve(){
     if (this.reservationForm.invalid) {
       console.log('Invalid form');
-      this.reservationForm.markAllAsTouched(); //shows validation errors in UI
+      this.reservationForm.markAllAsTouched();
       this.snackBar.open('Please fill in all required fields correctly.', 'Close', {
         duration: 3000,
       });
@@ -101,7 +101,6 @@ export class ReservationConfirmComponent {
     const formValues = this.reservationForm.value;
 
     const reservationData = {
-      userId: this.user ? this.user.id : undefined,
       checkIn: this.checkIn,
       checkOut: this.checkOut,
       roomId: null,
@@ -130,27 +129,28 @@ export class ReservationConfirmComponent {
           return;
         }
         
-        this.roomTypeService.getAvailableRoom(payload).subscribe({
+        this.roomTypeService.getFirstAvailableRoom(payload).subscribe({
           next: (res) => {
-            baseData.roomId = res.id;
+            baseData.roomId = Number(res.id);
             this.reservationService.createReservation(baseData).subscribe({
                 next: (res) => {
                   this.showSnack('Reservation created successfully!', 3000);
                   this.router.navigate(['/reservation/payement']);
                 },
                 error: (error) => {
-                  this.showSnack('Error creating reservation. Please try again.', 3000);
+                  console.error('Error creating reservation:', error);
+                  this.showSnack(`Error creating reservation. Please try again .`, 3000);
                 }
               });
           },
           error: (error) => {
-            this.showSnack('Error fetching available room. Please try again.', 3000);
+            this.showSnack(`Error fetching available room. Please try again.`, 3000);
           }
         });
         
       },
       error: (error) => {
-        this.showSnack('Room is not available for the selected dates', 3000);
+        this.showSnack(`Room is not available for the selected dates + ${error}`, 3000);
       }
     });
   }

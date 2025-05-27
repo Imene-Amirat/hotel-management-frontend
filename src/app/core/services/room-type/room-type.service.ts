@@ -24,12 +24,12 @@ export class RoomTypeService {
     return this.http.get<RoomGallery[]>(`${this.API_URL}/${id}/gallery`, {withCredentials: true});
   }
 
-  checkRoomAvailability(payload: { roomTypeId: number, checkIn: string, checkOut: string }): Observable<any> {
-    return this.http.post('http://localhost:8080/api/reservations/check-availability', payload, {withCredentials: true});
+  checkRoomAvailability(params: { roomTypeId: number, checkIn: string, checkOut: string }): Observable<any> {
+    return this.http.get(`${this.API_URL}/availability/check`, {params, withCredentials: true});
   }
 
-  getAvailableRoom(payload: { roomTypeId: number, checkIn: string, checkOut: string }): Observable<any> {
-    return this.http.post(`${this.API_URL}/get-availability-room`, payload, {withCredentials: true});
+  getFirstAvailableRoom(params: { roomTypeId: number, checkIn: string, checkOut: string }): Observable<any> {
+    return this.http.get(`${this.API_URL}/availability/first`, {params, withCredentials: true});
   }
 
 }
