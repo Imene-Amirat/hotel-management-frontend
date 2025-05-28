@@ -150,7 +150,8 @@ export class ReservationConfirmComponent {
         
       },
       error: (error) => {
-        this.showSnack(`Room is not available for the selected dates + ${error}`, 3000);
+        console.error('Error checking room availability:', error);
+        this.showSnack(`Room is not available for the selected dates.`, 3000);
       }
     });
   }

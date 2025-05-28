@@ -4,7 +4,7 @@ import { HomeComponent } from './features/home/home.component';
 import { RoomDetailsComponent } from './features/room-details/room-details.component';
 import { RoomsComponent } from './features/rooms/rooms.component';
 import { ReservationConfirmComponent } from './features/reservation-confirm/reservation-confirm.component';
-import { ReservationPayementComponent } from './features/reservation-payement/reservation-payement.component';
+import { ReservationPaymentComponent } from './features/reservation-payment/reservation-payment.component';
 
 export const routes: Routes = [
     ...authRoutes,   //take everything inside authRoutes array and insert it here
@@ -12,5 +12,5 @@ export const routes: Routes = [
     {path: 'rooms/:id', component: RoomDetailsComponent},
     {path: 'rooms', component: RoomsComponent}, 
     {path: 'reservation/confirm', component: ReservationConfirmComponent},
-    {path: 'reservation/payement', component: ReservationPayementComponent}
+    {path: 'reservation/payement', component: ReservationPaymentComponent}
 ];
