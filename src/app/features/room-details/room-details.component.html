@@ -66,21 +66,18 @@
       <form [formGroup]="bookingForm" (ngSubmit)="checkRoomAvailability()">
         <label for="checkIn">Check-In</label>
         <input type="date" id="checkIn" formControlName="checkIn" [min]="todayString" required>
-        <mat-error style="color: red;" *ngIf="bookingForm.get('checkIn')?.hasError('required') && (bookingForm.get('checkIn')?.touched || bookingForm.get('checkIn')?.dirty)">
-          Check-In date is required
-        </mat-error>
-
+        
         <label for="checkOut">Check-Out</label>
         <input type="date" id="checkOut" formControlName="checkOut" [min]="todayString" required>
-        <mat-error style="color: red;" *ngIf="bookingForm.get('checkOut')?.hasError('required') && (bookingForm.get('checkOut')?.touched || bookingForm.get('checkOut')?.dirty)">
-          Check-Out date is required
-        </mat-error>
 
         <div *ngIf="bookingForm.errors?.['dateRangeInvalid'] && (bookingForm.get('checkIn')?.touched || bookingForm.get('checkOut')?.touched)" class="error">
           Check-out date must be after check-in date.
         </div>
-        <div *ngIf="bookingForm.invalid && bookingForm.dirty" class="form-alert">
-          ⚠️ Please fix the errors above to proceed.
+        <div *ngIf="bookingForm.invalid && (bookingForm.dirty || bookingForm.touched)" class="form-alert">
+          ⚠️ Please fill all the fields.
+        </div>
+        <div *ngIf="bookingForm.errors?.['pastDate'] && (bookingForm.get('checkIn')?.touched || bookingForm.get('checkOut')?.touched)" class="error">
+          Check-in and check-out must be today or later.
         </div>
 
         <button type="submit" class="book-now" [disabled]="bookingForm.invalid">Book Now</button>

@@ -73,7 +73,7 @@ export class RoomDetailsComponent {
   bookingForm = this.fb.group(
     {checkIn: ['', Validators.required],
      checkOut: ['', Validators.required]},
-    {validators: dateRangeValidator()}
+    { validators: [dateRangeValidator(), noPastDateValidator()]}
   );
 
   checkRoomAvailability() {
@@ -139,4 +139,19 @@ export function dateRangeValidator(): ValidatorFn {
     return null;
   };
 }
+
+export function noPastDateValidator(): ValidatorFn {
+  return (group: AbstractControl): ValidationErrors | null => {
+    const checkIn = new Date(group.get('checkIn')?.value);
+    const checkOut = new Date(group.get('checkOut')?.value);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0); // Ignore time part
+
+    if ((checkIn && checkIn < today) || (checkOut && checkOut < today)) {
+      return { pastDate: true };
+    }
+    return null;
+  };
+}
+
 
