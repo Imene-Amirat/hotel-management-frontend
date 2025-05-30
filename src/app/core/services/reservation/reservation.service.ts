@@ -14,4 +14,8 @@ export class ReservationService {
   createReservation(reservationData: {}): Observable<any>{
     return this.http.post(`${this.API_URL}/`, reservationData, { withCredentials: true });
   }
+
+  getReservation(): Observable<any> {
+    return this.http.get(`${this.API_URL}/`, { withCredentials: true });
+  }
 }

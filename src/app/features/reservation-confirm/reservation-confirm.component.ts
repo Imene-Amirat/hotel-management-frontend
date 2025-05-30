@@ -135,7 +135,8 @@ export class ReservationConfirmComponent {
             this.reservationService.createReservation(baseData).subscribe({
                 next: (res) => {
                   this.showSnack('Reservation created successfully!', 3000);
-                  this.router.navigate(['/reservation/payement']);
+                  const reservationId = res.reservationId;
+                  this.router.navigate(['/reservation',reservationId,'payement']);
                 },
                 error: (error) => {
                   console.error('Error creating reservation:', error);

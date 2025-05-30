@@ -12,5 +12,5 @@ export const routes: Routes = [
     {path: 'rooms/:id', component: RoomDetailsComponent},
     {path: 'rooms', component: RoomsComponent}, 
     {path: 'reservation/confirm', component: ReservationConfirmComponent},
-    {path: 'reservation/payement', component: ReservationPaymentComponent}
+    {path: 'reservation/:id/payement', component: ReservationPaymentComponent}
 ];
