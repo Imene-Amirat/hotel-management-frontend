@@ -1,36 +1,59 @@
 <div class="payment-page">
-  <h1 class="page-title">Finaliser le paiement</h1>
-  <!-- Reservation Summary -->
   <div class="summary-box">
-    <h2>Votre réservation</h2>
-    <p><strong>Arrivée :</strong> dim. 22 juin 2025</p>
-    <p><strong>Départ :</strong> lun. 23 juin 2025</p>
-    <p><strong>Durée :</strong> 1 nuit</p>
-    <p><strong>Invités :</strong> 2 adultes</p>
-    <p class="total"><strong>Total :</strong> <span class="price">10 500 DA</span></p>
+    <h2>Reservation Details</h2>
+    <p><strong>Guest:</strong> {{ resSummary?.guestFirstName }} {{ resSummary?.guestLastName }}</p>
+    <p><strong>Phone:</strong> {{ resSummary?.guestPhone }}</p>
+    <p><strong>Room Number:</strong> {{ resSummary?.roomNumber }}</p>
+    <p><strong>Check-in:</strong> {{ resSummary?.checkIn | englishDate }}</p>
+    <p><strong>Check-out:</strong> {{ resSummary?.checkOut | englishDate }}</p>
+
+    <!-- Make total float to the right -->
+    <div class="total-row">
+      <span>Total:</span>
+      <span class="price">{{ resSummary?.totalPrice }} €</span>
+    </div>
   </div>
 
-  <!-- Payment Details -->
+
   <div class="payment-box">
-    <h2>Paiement</h2>
+    <h2>Payment Method</h2>
 
-    <div class="form-group">
-      <label for="cardNumber">Numéro de carte</label>
-      <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456">
-    </div>
-
-    <div class="form-row">
-      <div class="form-group">
-        <label for="expiryDate">Date d’expiration</label>
-        <input type="text" id="expiryDate" placeholder="MM/AA">
+    <form [formGroup]="paymentForm" (ngSubmit)="confirmAndPay()">
+      <div class="payment-options">
+        <label>
+          <input type="radio" formControlName="method" value="CREDIT_CARD" />
+          💳 Credit Card
+        </label>
+        <label>
+          <input type="radio" formControlName="method" value="PAY_AT_ARRIVAL" />
+          💵 Pay at Arrival
+        </label>
       </div>
+
+      <!-- Stripe-style card input -->
+      <div class="card-input" *ngIf="paymentForm.get('method')?.value === 'CREDIT_CARD'">
+        <input type="text" placeholder="Card Number" formControlName="cardNumber" />
+        <div class="card-details">
+          <input type="text" placeholder="MM/YY" formControlName="cardExpiry" />
+          <input type="text" placeholder="CVC" formControlName="cardCvc" />
+        </div>
+
+         <!-- Example error display -->
+        <div *ngIf="paymentForm.get('cardNumber')?.invalid && paymentForm.get('cardNumber')?.touched" class="form-alert">
+          Card Number is required
+        </div>
+      </div>
+
+      <button type="submit" [disabled]="paymentForm.invalid" class="confirm-btn">
+        Confirm and Pay
+      </button>
+    </form>
+
+    <!-- Success confirmation -->
+    <div class="payment-success" *ngIf="paymentSuccess">
+      <p>✅ Your payment was successful!</p>
+      <button class="home-btn" routerLink="/home">🏠 Return to Home</button>
     </div>
 
-    <div class="form-group">
-      <label for="cardHolder">Nom du titulaire</label>
-      <input type="text" id="cardHolder" placeholder="Ex. Imane Amirat">
-    </div>
-
-    <button class="pay-button">Payer maintenant</button>
   </div>
 </div>

@@ -6,7 +6,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class EnglishDatePipe implements PipeTransform {
 
-  transform(value: string): string {
+  transform(value: string | undefined): string {
+    if (!value) return '';
     const date = new Date(value);
     const dateEnglish = new Intl.DateTimeFormat('en-US', {
       weekday: 'short',
