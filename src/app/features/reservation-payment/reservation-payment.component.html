@@ -52,7 +52,7 @@
     <!-- Success confirmation -->
     <div class="payment-success" *ngIf="paymentSuccess">
       <p>✅ Your payment was successful!</p>
-      <button class="home-btn" routerLink="/home">🏠 Return to Home</button>
+      <button class="home-btn" (click)="goHome()">🏠 Return to Home</button>
     </div>
 
   </div>

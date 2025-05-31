@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatLabel } from '@angular/material/form-field';
 import { EnglishDatePipe } from '../../shared/pipes/english-date.pipe';
 import { ReservationService } from '../../core/services/reservation/reservation.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ReservationSummary } from '../../shared/models/ReservationSummary';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -31,7 +31,8 @@ export class ReservationPaymentComponent {
     private route: ActivatedRoute,
     private fb: FormBuilder,
     private snackBar: MatSnackBar,
-    private paymentService: PaymentService
+    private paymentService: PaymentService,
+    private router: Router
   ){}
 
   ngOnInit() {
@@ -86,8 +87,9 @@ export class ReservationPaymentComponent {
       method: this.paymentForm.get('method')?.value as string,
       reservationId: this.id,
       amount: this.resSummary?.totalPrice || 0,
-      created_at: new Date(),
+      created_at: new Date().toISOString(),
     };
+    console.log('Payment data:', data);
 
     this.paymentService.confirmPayment(data).subscribe({
       next: (res) => {
@@ -104,6 +106,10 @@ export class ReservationPaymentComponent {
         });
       }
     });
+  }
+
+  goHome() {
+    this.router.navigate(['']);
   }
 
 }

@@ -11,8 +11,8 @@ export class PaymentService {
   
   constructor(private http: HttpClient) { }
 
-  confirmPayment(data: {reservationId: number, method: string, amount: number, created_at: Date}): Observable<any>{
-    return this.http.post(`${this.API_URL}/`, {data, withCredentials: true });
+  confirmPayment(data: {reservationId: number, method: string, amount: number, created_at: string}): Observable<any>{
+    return this.http.post(`${this.API_URL}`, data, { withCredentials: true });
   }
   
 }
