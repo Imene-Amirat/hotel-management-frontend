@@ -10,6 +10,17 @@
     margin-bottom: 2rem;
   }
 
+  .error-message {
+    margin: 130px 0px 0px 170px;
+    background-color: #ffe0e0;
+    color: #b30000;
+    padding: 10px 16px;
+    border-left: 4px solid #ff4d4d;
+    border-radius: 4px;
+    font-weight: 500;
+    max-width: 600px;
+  }
+
   .reservation-card {
     display: flex;
     background-color: #fff;
@@ -45,9 +56,14 @@
 
     .dates,
     .guests,
-    .booked-date {
+    .room-type {
       margin: 0.25rem 0;
       color: #555;
+      font-size: 0.95rem;
+    }
+
+    .dates {
+      margin-top: 15px;
     }
   }
 

@@ -1,22 +1,24 @@
 <div class="reservations-container">
-  <h2>🧾 Your Reservations</h2>
+  <h2>Your Reservations</h2>
 
-  <div class="reservation-card">
+  <div class="reservation-card" *ngFor="let reservation of reservations">
     <img src="/assets/images/room3.webp" alt="Room image" class="room-image">
 
     <div class="reservation-details">
       <div class="reservation-header">
-        <p class="room-title"><strong>4 nights in Cabin 006</strong></p>
+        <p class="room-title"><strong>{{ reservation?.nbNights }} nights in Cabin {{ reservation?.roomNumber }}</strong></p>
       </div>
 
-      <p class="dates">Mon, Mar 31 2025 – Fri, Apr 04 2025</p>
-      <p class="guests">👥 2 guests</p>
-      <p class="booked-date">Booked: Sun, Mar 30 2025, 11:24 AM</p>
+      <p class="dates">{{ reservation?.checkIn | englishDate }} - {{ reservation?.checkOut | englishDate }}</p>
+      <p class="room-type">{{ reservation?.roomType }}</p>
+      <p class="guests">Guest: {{ reservation?.guestFirstName }} {{ reservation?.guestLastName }}</p>      
     </div>
 
     <div class="reservation-actions">
-      <div class="status-tag pending">⏳ Pending</div>
-      <div class="total-price"><strong>Total:</strong> 2800 €</div>
+      <div class="status-tag pending" *ngIf="reservation?.status === 'PENDING'">⏳ Pending</div>
+      <div class="status-tag pending" *ngIf="reservation?.status === 'CONFIRMED'">✅ Confirmed</div>
+      <div class="status-tag pending" *ngIf="reservation?.status === 'CANCELLED'">❌ Cancelled</div>
+      <div class="total-price"><strong>Total:</strong> {{ reservation?.totalPrice }} €</div>
       <div class="icons">
         <button class="edit-btn">✏️ Edit</button>
         <button class="delete-btn">🗑️ Delete</button>
@@ -24,26 +26,7 @@
     </div>
   </div>
 
-  <div class="reservation-card">
-    <img src="/assets/images/room1.webp" alt="Room image" class="room-image">
-
-    <div class="reservation-details">
-      <div class="reservation-header">
-        <p class="room-title"><strong>4 nights in Cabin 006</strong></p>
-      </div>
-
-      <p class="dates">Mon, Mar 31 2025 – Fri, Apr 04 2025</p>
-      <p class="guests">👥 2 guests</p>
-      <p class="booked-date">Booked: Sun, Mar 30 2025, 11:24 AM</p>
-    </div>
-
-    <div class="reservation-actions">
-      <div class="status-tag upcoming">🟢 Upcoming</div>
-      <div class="total-price"><strong>Total:</strong> 2800 €</div>
-      <div class="icons">
-        <button class="edit-btn">✏️ Edit</button>
-        <button class="delete-btn">🗑️ Delete</button>
-      </div>
-    </div>
+  <div *ngIf="errorMessage" class="error-message">
+    ⚠️ {{ errorMessage }}
   </div>
 </div>

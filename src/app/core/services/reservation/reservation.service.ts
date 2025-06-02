@@ -18,4 +18,8 @@ export class ReservationService {
   getReservationById(id: number): Observable<any> {
     return this.http.get(`${this.API_URL}/${id}`, { withCredentials: true });
   }
+
+  getAllReservationsByUser(): Observable<any> {
+    return this.http.get(`${this.API_URL}/user`, { withCredentials: true });
+  }
 }
