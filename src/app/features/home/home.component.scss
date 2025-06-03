@@ -2,7 +2,7 @@
   position: relative;
   padding: 20px 20px;
   width: 100%;
-  margin-bottom: 120px; // give space for the overlapping form
+  margin-bottom: 30px; // give space for the overlapping form
 
   .image-box {
     width: 100%;
@@ -94,7 +94,7 @@
   }
 
   .our-rooms {
-    padding: 130px 20px;
+    padding: 130px 20px 80px 20px;
     background-color: #f9f9f9;
     text-align: center;
 
@@ -183,5 +183,60 @@
       }
     }
   }  
+  
+  .reach-us-section {
+    padding: 40px 20px;
+    border-top: 1px solid #ddd;
+    margin-bottom: 0; // Ensure no extra space from here
+    padding-bottom: 0; // Remove bottom padding if any
+
+    .section-title {
+      text-align: center;
+      font-size: 38px;
+      margin-bottom: 35px;
+      color: #6e005f;
+      font-family: "Pacifico", cursive;
+    }
+
+    .reach-us-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+      align-items: flex-start;
+
+      .map-container {
+        flex: 1 1 700px;
+        border-radius: 10px;
+        overflow: hidden;
+      }
+      
+      .contact-container {
+        flex: 1 1 300px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        //padding: 10px;
+
+        .contact-block {
+          background-color: white;
+          padding: 20px;
+          border-radius: 8px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+
+          h4 {
+            font-size: 18px;
+            margin-bottom: 10px;
+          }
+
+          p {
+            margin: 5px 0;
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+
 }
 
