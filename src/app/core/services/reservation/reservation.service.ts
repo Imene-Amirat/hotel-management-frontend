@@ -22,4 +22,8 @@ export class ReservationService {
   getAllReservationsByUser(): Observable<any> {
     return this.http.get(`${this.API_URL}/user`, { withCredentials: true });
   }
+
+  deleteReservation(id: number): Observable<any> {
+    return this.http.delete(`${this.API_URL}/${id}`, { withCredentials: true });
+  }
 }

@@ -20,8 +20,23 @@
       <div class="status-tag pending" *ngIf="reservation?.status === 'CANCELLED'">❌ Cancelled</div>
       <div class="total-price"><strong>Total:</strong> {{ reservation?.totalPrice }} €</div>
       <div class="icons">
-        <button class="edit-btn">✏️ Edit</button>
-        <button class="delete-btn">🗑️ Delete</button>
+        <!-- PENDING -->
+        <div *ngIf="reservation.status === 'PENDING'">
+          <button class="edit-btn">💳 Pay</button>
+          <button class="delete-btn" (click)="delete(reservation.id!)">🗑️ Delete</button>
+        </div>
+        <!-- CONFIRMED -->
+        <div *ngIf="reservation.status === 'CONFIRMED'">
+          <!-- No actions -->
+        </div>
+        <!-- PAST -->
+        <div *ngIf="reservation.status === 'PAST'">
+          <button>📝 Leave a Review</button>
+        </div>
+        <!-- CANCELED -->
+        <div *ngIf="reservation.status === 'CANCELED'">
+          <!-- No actions -->
+        </div>
       </div>
     </div>
   </div>
