@@ -3,6 +3,7 @@ import { ReservationService } from '../../core/services/reservation/reservation.
 import { CommonModule } from '@angular/common';
 import { Reservation } from '../../shared/models/reservation';
 import { EnglishDatePipe } from '../../shared/pipes/english-date.pipe';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-my-reservations',
@@ -21,6 +22,7 @@ export class MyReservationsComponent {
 
   constructor(
     private reservationsService: ReservationService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -51,5 +53,9 @@ export class MyReservationsComponent {
         this.errorMessage = err?.error?.message || 'An unexpected error occurred while deleting the reservation.';
       }
     });
+  }
+
+  pay(reservationId: number) {
+    this.router.navigate(['/reservation',reservationId,'payement']);
   }
 }

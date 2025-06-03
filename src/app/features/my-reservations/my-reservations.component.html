@@ -22,7 +22,7 @@
       <div class="icons">
         <!-- PENDING -->
         <div *ngIf="reservation.status === 'PENDING'">
-          <button class="edit-btn">💳 Pay</button>
+          <button class="pay-btn" (click)="pay(reservation.id!)">💳 Pay</button>
           <button class="delete-btn" (click)="delete(reservation.id!)">🗑️ Delete</button>
         </div>
         <!-- CONFIRMED -->
