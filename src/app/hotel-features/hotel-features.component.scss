@@ -1,0 +1,100 @@
+.features-title {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 2.4rem;
+  margin-bottom: 0.5rem;
+  color: #6e005f;
+  font-family: "Pacifico", cursive;
+}
+
+.features-grid {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  padding: 2rem;
+
+  h1{
+    font-size: 38px;
+    margin-bottom: 35px;
+    color: #6e005f;
+    font-family: "Pacifico", cursive;
+  }
+
+  .feature-card {
+    position: relative;
+    width: 300px;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card-content {
+      position: absolute;
+      bottom: 1.2rem;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      color: white;
+      font-weight: bold;
+      font-size: 1.3rem;
+      letter-spacing: 1px;
+      z-index: 1;
+      text-shadow: 1px 1px 5px #000;
+    }
+
+    .card-hover {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.65);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      padding: 1rem;
+      text-align: center;
+      transition: opacity 0.3s ease-in-out;
+
+      p {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      .learn-more {
+        background-color: #d4af7a;
+        border: none;
+        color: white;
+        padding: 0.6rem 1.2rem;
+        border-radius: 25px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.2s;
+
+        &:hover {
+          background-color: #b28d5a;
+        }
+      }
+    }
+
+    &:hover .card-hover {
+      opacity: 1;
+    }
+
+    &:hover {
+      transform: translateY(-8px);
+    }
+  }
+}
