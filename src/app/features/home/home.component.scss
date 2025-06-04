@@ -183,7 +183,51 @@
       }
     }
   }  
-  
+
+  .stats-section {
+    padding: 40px 20px 80px 20px;
+    text-align: center;
+
+    .stats-title {
+      margin-bottom: 45px;
+      font-size: 38px;
+      color: #6e005f;
+      font-family: "Pacifico", cursive;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .stat-card {
+      background: white;
+      padding: 30px 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: translateY(-5px);
+      }
+
+      .stat-number {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #1d3557;
+        margin-bottom: 20px;
+      }
+
+      .stat-label {
+        font-size: 1.1rem;
+        color: #555;
+      }
+    }
+  }
+
   .reach-us-section {
     padding: 40px 20px;
     border-top: 1px solid #ddd;
