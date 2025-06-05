@@ -1,36 +1,14 @@
 <h1 class="features-title">Our Features</h1>
 
 <div class="features-grid">
-  <div class="feature-card">
-    <img src="assets/images/Spa.jpg" alt="Pool Area" />
+  <div class="feature-card" *ngFor="let feature of features">
+    <img [src]="apiUrl + feature.imageUrl" [alt]="feature.name" />
     <div class="card-content">
-      <h3>HOTEL OFFERS</h3>
+      <h3>{{ feature.name }}</h3>
     </div>
     <div class="card-hover">
-      <p>Special occasions deserve special offers.</p>
-      <button class="learn-more">Learn More</button>
-    </div>
-  </div>
-
-  <div class="feature-card">
-    <img src="assets/images/Spa1.jpg" alt="Kids Zone" />
-    <div class="card-content">
-      <h3>KIDS ZONE</h3>
-    </div>
-    <div class="card-hover">
-      <p>Safe and joyful playground for your children.</p>
-      <button class="learn-more">Learn More</button>
-    </div>
-  </div>
-
-  <div class="feature-card">
-    <img src="assets/images/spa2.jpg" alt="Party Night" />
-    <div class="card-content">
-      <h3>PARTY NIGHT</h3>
-    </div>
-    <div class="card-hover">
-      <p>Enjoy music and fun with our night events!</p>
-      <button class="learn-more">Learn More</button>
+      <p>{{ feature.shortDescription }}</p>
+      <button class="learn-more" (click)="goToDetailsFeature(feature!.id)">Learn More</button>
     </div>
   </div>
 </div>
