@@ -1,0 +1,38 @@
+<div class="feature-detail-container">
+  <div class="feature-header">
+    <h1>Swimming Pool</h1>
+    <p class="short-description">Dive into Refreshment</p>
+  </div>
+
+  <div class="feature-main">
+    <div class="feature-image">
+      <img src="assets/images/Spa.jpg" alt="Swimming Pool">
+    </div>
+
+    <div class="feature-info">
+      <h2>Why You'll Love It</h2>
+      <p class="full-description">
+        Enjoy a crystal-clear outdoor pool surrounded by greenery. Ideal for families or solo relaxation.
+      </p>
+
+      <h3>Opening Hours</h3>
+      <p>Every Day: 8:00 AM – 8:00 PM</p>
+    </div>
+  </div>
+
+  <div class="feature-gallery">
+    <h3>Gallery</h3>
+    <div class="gallery-images">
+      <img src="assets/images/Spa.jpg" alt="Pool 1" onclick="zoomImage(this.src)">
+      <img src="assets/images/Spa1.jpg" alt="Pool 2" onclick="zoomImage(this.src)">
+      <img src="assets/images/spa3.jpg" alt="Pool 3" onclick="zoomImage(this.src)">
+      <img src="assets/images/gym.jpg" alt="Pool 4" onclick="zoomImage(this.src)">
+    </div>
+  </div>
+
+  <!-- Zoom Modal -->
+  <dialog id="zoomDialog">
+    <span onclick="closeZoom()" class="close">&times;</span>
+    <img id="zoomedImg" src="" alt="Zoomed Photo">
+  </dialog>
+</div>

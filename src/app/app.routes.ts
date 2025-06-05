@@ -7,6 +7,7 @@ import { ReservationConfirmComponent } from './features/reservation-confirm/rese
 import { ReservationPaymentComponent } from './features/reservation-payment/reservation-payment.component';
 import { MyReservationsComponent } from './features/my-reservations/my-reservations.component';
 import { HotelFeaturesComponent } from './hotel-features/hotel-features.component';
+import { FeatureDetailsComponent } from './features/feature-details/feature-details.component';
 
 export const routes: Routes = [
     ...authRoutes,   //take everything inside authRoutes array and insert it here
@@ -16,5 +17,6 @@ export const routes: Routes = [
     {path: 'reservation/confirm', component: ReservationConfirmComponent},
     {path: 'reservation/:id/payement', component: ReservationPaymentComponent},
     {path: 'reservations', component: MyReservationsComponent},
-    {path: 'features', component: HotelFeaturesComponent}
+    {path: 'features', component: HotelFeaturesComponent},
+    {path: 'features/:id', component: FeatureDetailsComponent}
 ];
