@@ -1,22 +1,22 @@
 <div class="feature-detail-container">
   <div class="feature-header">
-    <h1>Swimming Pool</h1>
-    <p class="short-description">Dive into Refreshment</p>
+    <h1>{{ feature?.name }}</h1>
+    <p class="short-description">{{ feature?.shortDescription }}</p>
   </div>
 
   <div class="feature-main">
     <div class="feature-image">
-      <img src="assets/images/Spa.jpg" alt="Swimming Pool">
+      <img [src]="apiUrl + feature?.imageUrl" alt="Swimming Pool">
     </div>
 
     <div class="feature-info">
       <h2>Why You'll Love It</h2>
       <p class="full-description">
-        Enjoy a crystal-clear outdoor pool surrounded by greenery. Ideal for families or solo relaxation.
+        {{ feature?.fullDescription }}
       </p>
 
       <h3>Opening Hours</h3>
-      <p>Every Day: 8:00 AM – 8:00 PM</p>
+      <p>{{ feature?.openingHours }}</p>
     </div>
   </div>
 
@@ -29,10 +29,4 @@
       <img src="assets/images/gym.jpg" alt="Pool 4" onclick="zoomImage(this.src)">
     </div>
   </div>
-
-  <!-- Zoom Modal -->
-  <dialog id="zoomDialog">
-    <span onclick="closeZoom()" class="close">&times;</span>
-    <img id="zoomedImg" src="" alt="Zoomed Photo">
-  </dialog>
 </div>
