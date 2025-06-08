@@ -1,6 +1,8 @@
 export interface Feature {
   id: number;
-	name: string;
-	shortDescription: string;
-	imageUrl: string;
+  name: string;
+  shortDescription: string;
+  fullDescription: string;
+  openingHours: string;
+  imageUrl: string;
 }

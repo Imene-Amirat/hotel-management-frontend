@@ -15,4 +15,8 @@ export class HotelFeaturesService {
   getAllFeatures(): Observable<any>{
     return this.http.get(`${this.API_URL}`, { withCredentials: true });
   }
+
+  getFeatureById(id: string | null): Observable<any> {
+    return this.http.get(`${this.API_URL}/${id}`, { withCredentials: true });
+  }
 }

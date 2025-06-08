@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
-import { HotelFeaturesService } from '../core/services/hotel-features/hotel-features.service';
-import { Feature } from '../shared/models/feature';
+import { HotelFeaturesService } from '../../core/services/hotel-features/hotel-features.service';
+import { Feature } from '../../shared/models/feature';
 
 @Component({
   selector: 'app-hotel-features',
@@ -36,7 +36,6 @@ export class HotelFeaturesComponent {
   }
 
   goToDetailsFeature(id: number) {
-    console.log('Navigating to details feature');
     this.router.navigate(['/features', id]);
   }
 

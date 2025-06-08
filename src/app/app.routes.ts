@@ -6,7 +6,7 @@ import { RoomsComponent } from './features/rooms/rooms.component';
 import { ReservationConfirmComponent } from './features/reservation-confirm/reservation-confirm.component';
 import { ReservationPaymentComponent } from './features/reservation-payment/reservation-payment.component';
 import { MyReservationsComponent } from './features/my-reservations/my-reservations.component';
-import { HotelFeaturesComponent } from './hotel-features/hotel-features.component';
+import { HotelFeaturesComponent } from './features/hotel-features/hotel-features.component';
 import { FeatureDetailsComponent } from './features/feature-details/feature-details.component';
 
 export const routes: Routes = [

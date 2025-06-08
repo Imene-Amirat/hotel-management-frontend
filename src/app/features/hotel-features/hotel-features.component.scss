@@ -8,10 +8,11 @@
 }
 
 .features-grid {
-  display: flex;
-  gap: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   justify-content: center;
-  padding: 2rem;
+  padding: 40px 130px 60px 130px;
+  gap: 2rem;
 
   h1{
     font-size: 38px;

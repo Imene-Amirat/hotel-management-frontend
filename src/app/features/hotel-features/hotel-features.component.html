@@ -1,5 +1,6 @@
 <h1 class="features-title">Our Features</h1>
 
+<p *ngIf="features.length === 0">No rooms available for this now</p>
 <div class="features-grid">
   <div class="feature-card" *ngFor="let feature of features">
     <img [src]="apiUrl + feature.imageUrl" [alt]="feature.name" />
