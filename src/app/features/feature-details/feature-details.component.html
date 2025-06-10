@@ -23,10 +23,18 @@
   <div class="feature-gallery">
     <h3>Gallery</h3>
     <div class="gallery-images">
-      <img src="assets/images/Spa.jpg" alt="Pool 1" onclick="zoomImage(this.src)">
-      <img src="assets/images/Spa1.jpg" alt="Pool 2" onclick="zoomImage(this.src)">
-      <img src="assets/images/spa3.jpg" alt="Pool 3" onclick="zoomImage(this.src)">
-      <img src="assets/images/gym.jpg" alt="Pool 4" onclick="zoomImage(this.src)">
+      <p *ngIf="featureGallery.length === 0">No images available for this feature.</p>
+      <img 
+        *ngFor="let image of featureGallery" 
+        [src]="apiUrl + image.imageUrl" 
+        [alt]="image.imageUrl"
+        (click)="openModal(apiUrl + image.imageUrl)"/>
     </div>
   </div>
+
+  <!-- Image Zoom Modal -->
+  <div class="image-modal" *ngIf="zoomedImage" (click)="closeModal()">
+    <img [src]="zoomedImage" alt="Zoomed Image" />
+  </div>
+
 </div>
