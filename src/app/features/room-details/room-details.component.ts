@@ -12,6 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ConfirmDialogService } from '../../core/services/confirm-dialog/confirm-dialog.service';
 import { AuthService } from '../../core/services/auth/auth.service';
+import { RoomService } from '../../core/services/room/room.service';
 
 @Component({
   selector: 'app-room-details',
@@ -37,7 +38,7 @@ export class RoomDetailsComponent {
   todayString = new Date().toISOString().split('T')[0];
 
   constructor(
-    private roomService: RoomTypeService,
+    private roomService: RoomService,
     private route: ActivatedRoute,
     private fb: FormBuilder,
     private snackBar: MatSnackBar,
@@ -49,11 +50,11 @@ export class RoomDetailsComponent {
   ngOnInit() {
     
     this.roomService.getRoomTypeById(this.id).subscribe({
-      next: (res) => {
+      next: (res: any) => {
         console.log('Room Details:', res);
         this.room = res; 
       },
-      error: (err) => {
+      error: (err: any) => {
         console.error('Error fetching room details:', err);
         this.room = null;
       }

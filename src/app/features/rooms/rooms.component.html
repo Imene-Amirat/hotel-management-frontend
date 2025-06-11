@@ -3,9 +3,9 @@
 
   <div class="rooms-grid">
     <div class="room-card" *ngFor="let room of rooms" [routerLink]="['/rooms', room.id]">
-      <img [src]="apiUrl + room.imageUrl" [alt]="room.type">
+      <img [src]="apiUrl + room.imageUrl" [alt]="room.name">
       <div class="room-info">
-        <h3>{{ room.type }}</h3>
+        <h3>{{ room.name }}</h3>
         <p><i class="fas fa-ruler-combined"></i> {{ room.roomSize }}m²</p>
         <p><i class="fas fa-bed"></i> {{ room.bedType }} Bed</p>
         <p><i class="fa-solid fa-users"></i> {{ room.capacityAdults }} Adults<span *ngIf="room.capacityChildren > 0">, {{ room.capacityChildren }} Children</span></p>

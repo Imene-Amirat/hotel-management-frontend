@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { EnglishDatePipe } from '../../shared/pipes/english-date.pipe'; 
-import { RoomTypeService } from '../../core/services/room-type/room-type.service';
 import { RoomType } from '../../shared/models/roomType';
 import { AuthService } from '../../core/services/auth/auth.service';
 import { User } from '../../shared/models/user';
@@ -12,6 +11,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { ReservationService } from '../../core/services/reservation/reservation.service';
+import { RoomService } from '../../core/services/room/room.service';
 
 @Component({
   selector: 'app-reservation-confirm',
@@ -39,7 +39,7 @@ export class ReservationConfirmComponent {
   
   constructor(
     private route: ActivatedRoute,
-    private roomTypeService: RoomTypeService,
+    private roomService: RoomService,
     private authService: AuthService,
     private fb: FormBuilder,
     private snackBar: MatSnackBar,
@@ -48,7 +48,7 @@ export class ReservationConfirmComponent {
   ) { }
 
   ngOnInit() {
-    this.roomTypeService.getRoomTypeById(this.roomTypeId).subscribe({
+    this.roomService.getRoomTypeById(this.roomTypeId).subscribe({
       next: (res) => {
         this.roomType = res;
         console.log('Room type fetched successfully:', this.roomType);
@@ -122,14 +122,14 @@ export class ReservationConfirmComponent {
   }
 
   private checkAvailabilityAndReserve(payload: any, baseData: any): void {
-    this.roomTypeService.checkRoomAvailability(payload).subscribe({
+    this.roomService.checkRoomAvailability(payload).subscribe({
       next: (res) => {
         if(!res.available) {
           this.showSnack('Room is not available for the selected dates', 3000);
           return;
         }
         
-        this.roomTypeService.getFirstAvailableRoom(payload).subscribe({
+        this.roomService.getFirstAvailableRoom(payload).subscribe({
           next: (res) => {
             baseData.roomId = Number(res.id);
             this.reservationService.createReservation(baseData).subscribe({

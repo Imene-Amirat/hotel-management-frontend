@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { RoomTypeService } from '../../core/services/room-type/room-type.service';
 import { RoomType } from '../../shared/models/roomType';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
+import { RoomService } from '../../core/services/room/room.service';
 
 @Component({
   selector: 'app-rooms',
@@ -15,7 +15,7 @@ export class RoomsComponent {
   rooms: RoomType[] = [];
   apiUrl = 'http://localhost:8080/';
 
-  constructor(private roomService: RoomTypeService, private router: Router) { }
+  constructor(private roomService: RoomService, private router: Router) { }
 
   ngOnInit() {
     this.roomService.getAllRooms().subscribe({

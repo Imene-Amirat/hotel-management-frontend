@@ -2,10 +2,10 @@
   <!-- HEADER SECTION -->
   <div class="room-header">
     <div class="room-thumbnail">
-      <img [src]="apiUrl + room?.imageUrl" [alt]="room?.type">
+      <img [src]="apiUrl + room?.imageUrl" [alt]="room?.name">
     </div>
     <div class="room-info-header">
-      <h1>{{ room?.type }}</h1>
+      <h1>{{ room?.name }}</h1>
       <p class="room-type"><i class="fas fa-ruler-combined"></i> {{ room?.roomSize }}m²   <i class="fas fa-bed"></i> {{ room?.bedType }}</p>
       <p class="price">${{ room?.pricePerNight }} per night</p>
       <div class="availability">

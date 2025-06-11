@@ -1,6 +1,6 @@
 export interface RoomType {
     id: number;
-    type: string;
+    name: string;
     description: string;
     capacityAdults: number;
     capacityChildren: number;
