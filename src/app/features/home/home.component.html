@@ -5,33 +5,44 @@
       <h2>Check Booking Availability</h2>
       
       <div class="form-box">
-        <div class="input-box">
-          <label for="checkIn">Check-in</label>
-          <input type="date" id="checkIn" name="Check-in" />
-        </div>
+        <form [formGroup]="searchForm" (ngSubmit)="search()">
+          <div class="input-box">
+            <label for="checkIn">Check-in</label>
+            <input type="date" id="checkIn" formControlName="checkIn" [min]="todayString" required />
+          </div>
 
-        <div class="input-box">
-          <label for="checkOut">Check-out</label>
-          <input type="date" id="checkOut" name="Check-out" />
-        </div>
+          <div class="input-box">
+            <label for="checkOut">Check-out</label>
+            <input type="date" id="checkOut" formControlName="checkOut" [min]="todayString" required />
+          </div>
 
-        <div class="input-box">
-          <label for="adult">Adult</label>
-          <select id="adult">
-            <option>1 Adult</option>
-          </select>
-        </div>
+          <div class="input-box">
+            <label for="roomType">Room Type</label>
+            <select id="roomType" formControlName="roomType">
+              <option value="">Select Room Type</option>
+              <option *ngFor="let roomType of roomTypes" [value]="roomType.id">{{ roomType.name }}</option>
+            </select>
+          </div>
 
-        <div class="input-box">
-          <label for="children">Children</label>
-          <select id="children">
-            <option>0 Children</option>
-          </select>
-        </div>
+          <div class="input-box">
+           <label for="price">Max Price</label>
+            <input
+              type="range"
+              id="price"
+              min="100"
+              max="1000"
+              step="100"
+              [value]="price"
+              (input)="onPriceInput($event)"
+              formControlName="price"
+            />
+            <div>Selected: {{ price }} €</div>
+          </div>
 
-        <div class="input-box button-box">
-          <button type="submit">Search</button>
-        </div>
+          <div class="input-box button-box">
+            <button type="submit">Search</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
@@ -42,9 +53,9 @@
     <p *ngIf="rooms.length === 0">No rooms available for this now</p>
     <div class="room-cards">
       <div class="room-card" *ngFor="let room of rooms | slice:0:3">
-        <img [src]="apiUrl + room.imageUrl" [alt]="room.type"/>
+        <img [src]="apiUrl + room.imageUrl" [alt]="room.name"/>
         <div class="room-info">
-          <h3>{{ room.type }}</h3>
+          <h3>{{ room.name }}</h3>
           <p>Capacity: {{ room.capacityAdults }} Adults<span *ngIf="room.capacityChildren > 0">, {{ room.capacityChildren }} Child</span></p>
           <p>Price per night: ${{ room.pricePerNight }}</p>
           <button class="book-button" (click)="goToDetailsRoom(room.id)">Details & Reservation →</button>

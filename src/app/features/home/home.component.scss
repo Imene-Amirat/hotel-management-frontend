@@ -39,8 +39,9 @@
 
       .form-box {
         display: flex;
+        flex-direction: row;
+        justify-content: space-between;
         flex-wrap: wrap;
-        justify-content: center;
         gap: 1rem;
         margin-top: 10px;
 
@@ -49,8 +50,9 @@
           flex-direction: column;
           align-items: flex-start;
           font-size: 0.9rem;
-          margin: 10px 10px;
-         
+          margin: 10px 0px;
+          min-width: 180px;
+
           label {
             margin-bottom: 6px;
             font-weight: 500;
@@ -63,7 +65,11 @@
             border-radius: 6px;
             border: 1px solid #ccc;
             font-size: 0.9rem;
-            min-width: 160px;
+            min-width: 100%;
+            &:focus {
+              border-color: #6e005f;
+              outline: none;
+            }
           }
         }
 
@@ -71,7 +77,8 @@
           display: flex;
           flex-direction: column;
           justify-content: flex-end;
-          margin: 10px 10px;
+          //margin: 10px 10px;
+          margin: auto;
 
           button{
             background-color: #660033;
@@ -282,5 +289,16 @@
     }
   }
 
+}
+
+@media screen and (max-width: 768px) {
+  .form-box {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+  }
+
+  .input-box {
+    min-width: 240px;
+  }
 }
 

@@ -2,7 +2,7 @@
   <h1 class="page-title">Our Rooms</h1>
 
   <div class="rooms-grid">
-    <div class="room-card" *ngFor="let room of rooms" [routerLink]="['/rooms', room.id]">
+    <div class="room-card" *ngFor="let room of filteredRooms" [routerLink]="['/rooms', room.id]">
       <img [src]="apiUrl + room.imageUrl" [alt]="room.name">
       <div class="room-info">
         <h3>{{ room.name }}</h3>

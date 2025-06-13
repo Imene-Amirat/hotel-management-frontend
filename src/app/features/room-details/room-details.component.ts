@@ -48,7 +48,6 @@ export class RoomDetailsComponent {
   ) { }
 
   ngOnInit() {
-    
     this.roomService.getRoomTypeById(this.id).subscribe({
       next: (res: any) => {
         console.log('Room Details:', res);
@@ -67,6 +66,18 @@ export class RoomDetailsComponent {
       },
       error: (err) => {
         console.error('Error fetching room gallery:', err);
+      }
+    });
+
+    this.route.queryParamMap.subscribe(params => {
+      const checkIn = params.get('checkIn');
+      const checkOut = params.get('checkOut');
+
+      if (checkIn) {
+        this.bookingForm.get('checkIn')?.setValue(checkIn);
+      }
+      if (checkOut) {
+        this.bookingForm.get('checkOut')?.setValue(checkOut);
       }
     });
   }

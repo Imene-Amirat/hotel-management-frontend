@@ -31,4 +31,8 @@ export class RoomService {
   getFirstAvailableRoom(params: { roomTypeId: number, checkIn: string, checkOut: string }): Observable<any> {
     return this.http.get(`${this.API_URL}/availability/first`, {params, withCredentials: true});
   }
+
+  searchRooms(params: { roomTypeId?: number, checkIn?: string, checkOut?: string, price?: number }): Observable<any> {
+    return this.http.get(`${this.API_URL}/search`, {params, withCredentials: true});
+  }
 }
