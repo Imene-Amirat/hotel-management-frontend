@@ -4,28 +4,28 @@
     <div class="booking-box">
       <h2>Check Booking Availability</h2>
       
-      <div class="form-box">
-        <form [formGroup]="searchForm" (ngSubmit)="search()">
-          <div class="input-box">
-            <label for="checkIn">Check-in</label>
-            <input type="date" id="checkIn" formControlName="checkIn" [min]="todayString" required />
-          </div>
+      <div class="form-box" [formGroup]="searchForm" (ngSubmit)="search()">
+        <div class="input-box">
+          <label for="checkIn">Check-in</label>
+          <input type="date" id="checkIn" formControlName="checkIn" [min]="todayString" required />
+        </div>
 
-          <div class="input-box">
-            <label for="checkOut">Check-out</label>
-            <input type="date" id="checkOut" formControlName="checkOut" [min]="todayString" required />
-          </div>
+        <div class="input-box">
+          <label for="checkOut">Check-out</label>
+          <input type="date" id="checkOut" formControlName="checkOut" [min]="todayString" required />
+        </div>
 
-          <div class="input-box">
-            <label for="roomType">Room Type</label>
-            <select id="roomType" formControlName="roomType">
-              <option value="">Select Room Type</option>
-              <option *ngFor="let roomType of roomTypes" [value]="roomType.id">{{ roomType.name }}</option>
-            </select>
-          </div>
+        <div class="input-box">
+          <label for="roomType">Room Type</label>
+          <select id="roomType" formControlName="roomType">
+            <option value="">Select Room Type</option>
+            <option *ngFor="let roomType of roomTypes" [value]="roomType.id">{{ roomType.name }}</option>
+          </select>
+        </div>
 
-          <div class="input-box">
-           <label for="price">Max Price</label>
+        <div class="input-box slider-box">
+          <label for="price">Max Price</label>
+          <div class="slider-wrapper">
             <input
               type="range"
               id="price"
@@ -36,13 +36,13 @@
               (input)="onPriceInput($event)"
               formControlName="price"
             />
-            <div>Selected: {{ price }} €</div>
+            <span>{{ price }} €</span>
           </div>
+        </div>
 
-          <div class="input-box button-box">
-            <button type="submit">Search</button>
-          </div>
-        </form>
+        <div class="input-box button-box">
+          <button type="submit">Search</button>
+        </div>
       </div>
     </div>
   </div>
