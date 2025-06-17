@@ -1,27 +1,61 @@
-# HotelManagementFrontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.12.
+# Hotel Booking Frontend
 
-## Development server
+This is the frontend of a hotel booking system built with **Angular**. The application allows users to search for available rooms based on selected criteria like check-in/check-out dates, room type, and price range.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## 🖥️ Technologies Used
 
-## Code scaffolding
+- Angular 17+
+- TypeScript
+- HTML5
+- SCSS
+- Angular Material (optional UI components)
+- Responsive layout (Flexbox/Grid)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## ✨ Features
 
-## Build
+- Home page with a dynamic room search form
+- Form validations (dates, room type, price)
+- Live slider price updates
+- Navigation to room details with selected search data
+- Room listing with filter results (via query params)
+- Responsive design
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## 📸 Screenshots
 
-## Running unit tests
+| Home Search Form | Filtered Rooms |
+|------------------|----------------|
+| ![Home](./assets/screenshots/home.png) | ![Rooms](./assets/screenshots/rooms.png) |
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## 📂 Project Structure
+src/
+├── app/
+│ ├── features/
+│ │ ├── home/
+│ │ └── rooms/
+│ ├── core/
+│ │ └── services/
+│ └── shared/
+│   └── models/
+│   └── pipes/
+├── assets/
+│ └── images/
+└── styles/
 
-## Running end-to-end tests
+### Prerequisites
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- Node.js v20.18.3
+- Angular CLI v17
+- java v17
 
-## Further help
+### Setup
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```bash
+git clone https://github.com/Imene-Amirat/hotel-management-frontend.git
+cd hotel-management-frontend
+npm install
+ng serve
+Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+
+
+
