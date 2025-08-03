@@ -11,39 +11,39 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        loadComponent: () => import('./features/home/home.component').then(m => m.HomeComponent)
+        loadComponent: () => import('./features/user/home/home.component').then(m => m.HomeComponent)
       },
       {
         path: 'rooms/:id',
-        loadComponent: () => import('./features/room-details/room-details.component').then(m => m.RoomDetailsComponent)
+        loadComponent: () => import('./features/user/room-details/room-details.component').then(m => m.RoomDetailsComponent)
       },
       {
         path: 'rooms',
-        loadComponent: () => import('./features/rooms/rooms.component').then(m => m.RoomsComponent)
+        loadComponent: () => import('./features/user/rooms/rooms.component').then(m => m.RoomsComponent)
       },
       {
         path: 'reservation/confirm',
-        loadComponent: () => import('./features/reservation-confirm/reservation-confirm.component').then(m => m.ReservationConfirmComponent)
+        loadComponent: () => import('./features/user/reservation-confirm/reservation-confirm.component').then(m => m.ReservationConfirmComponent)
       },
       {
         path: 'reservation/:id/payement',
-        loadComponent: () => import('./features/reservation-payment/reservation-payment.component').then(m => m.ReservationPaymentComponent)
+        loadComponent: () => import('./features/user/reservation-payment/reservation-payment.component').then(m => m.ReservationPaymentComponent)
       },
       {
         path: 'reservations',
-        loadComponent: () => import('./features/my-reservations/my-reservations.component').then(m => m.MyReservationsComponent)
+        loadComponent: () => import('./features/user/my-reservations/my-reservations.component').then(m => m.MyReservationsComponent)
       },
       {
         path: 'features',
-        loadComponent: () => import('./features/hotel-features/hotel-features.component').then(m => m.HotelFeaturesComponent)
+        loadComponent: () => import('./features/user/hotel-features/hotel-features.component').then(m => m.HotelFeaturesComponent)
       },
       {
         path: 'features/:id',
-        loadComponent: () => import('./features/feature-details/feature-details.component').then(m => m.FeatureDetailsComponent)
+        loadComponent: () => import('./features/user/feature-details/feature-details.component').then(m => m.FeatureDetailsComponent)
       },
       {
         path: 'about',
-        loadComponent: () => import('./features/about/about.component').then(m => m.AboutComponent)
+        loadComponent: () => import('./features/user/about/about.component').then(m => m.AboutComponent)
       }
     ]
   },

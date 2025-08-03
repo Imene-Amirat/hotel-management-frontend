@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { RoomType } from '../../shared/models/roomType';
+import { RoomType } from '../../../shared/models/roomType';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { RoomService } from '../../core/services/room/room.service';
+import { RoomService } from '../../../core/services/room/room.service';
 import { combineLatest } from 'rxjs';
 
 @Component({

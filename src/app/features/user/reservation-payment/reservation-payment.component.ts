@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatLabel } from '@angular/material/form-field';
-import { EnglishDatePipe } from '../../shared/pipes/english-date.pipe';
-import { ReservationService } from '../../core/services/reservation/reservation.service';
+import { EnglishDatePipe } from '../../../shared/pipes/english-date.pipe';
+import { ReservationService } from '../../../core/services/reservation/reservation.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ReservationSummary } from '../../shared/models/ReservationSummary';
+import { ReservationSummary } from '../../../shared/models/ReservationSummary';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { PaymentService } from '../../core/services/payment/payment.service';
+import { PaymentService } from '../../../core/services/payment/payment.service';
 
 @Component({
   selector: 'app-reservation-payment',

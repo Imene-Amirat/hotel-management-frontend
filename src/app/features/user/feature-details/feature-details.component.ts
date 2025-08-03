@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { HotelFeaturesService } from '../../core/services/hotel-features/hotel-features.service';
-import { Feature } from '../../shared/models/feature';
-import { FacilityGallery } from '../../shared/models/facilityGallery';
+import { HotelFeaturesService } from '../../../core/services/hotel-features/hotel-features.service';
+import { Feature } from '../../../shared/models/feature';
+import { FacilityGallery } from '../../../shared/models/facilityGallery';
 import { CommonModule } from '@angular/common';
 
 @Component({

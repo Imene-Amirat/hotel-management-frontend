@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-import { RoomType } from '../../shared/models/roomType';
+import { RoomType } from '../../../shared/models/roomType';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { AbstractControl, FormBuilder, FormsModule, ReactiveFormsModule, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { RoomService } from '../../core/services/room/room.service';
-import { RoomTypeService } from '../../core/services/room-type/room-type.service';
+import { RoomService } from '../../../core/services/room/room.service';
+import { RoomTypeService } from '../../../core/services/room-type/room-type.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({

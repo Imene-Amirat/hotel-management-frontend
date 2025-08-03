@@ -1,17 +1,17 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { EnglishDatePipe } from '../../shared/pipes/english-date.pipe'; 
-import { RoomType } from '../../shared/models/roomType';
-import { AuthService } from '../../core/services/auth/auth.service';
-import { User } from '../../shared/models/user';
+import { EnglishDatePipe } from '../../../shared/pipes/english-date.pipe'; 
+import { RoomType } from '../../../shared/models/roomType';
+import { AuthService } from '../../../core/services/auth/auth.service';
+import { User } from '../../../shared/models/user';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { ReservationService } from '../../core/services/reservation/reservation.service';
-import { RoomService } from '../../core/services/room/room.service';
+import { ReservationService } from '../../../core/services/reservation/reservation.service';
+import { RoomService } from '../../../core/services/room/room.service';
 
 @Component({
   selector: 'app-reservation-confirm',

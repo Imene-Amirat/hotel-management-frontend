@@ -1,18 +1,17 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { RoomTypeService } from '../../core/services/room-type/room-type.service';
-import { RoomType } from '../../shared/models/roomType';
+import { RoomType } from '../../../shared/models/roomType';
 import { CommonModule } from '@angular/common';
-import { RoomGallery } from '../../shared/models/roomGallery';
+import { RoomGallery } from '../../../shared/models/roomGallery';
 import { AbstractControl, FormBuilder, FormsModule, ReactiveFormsModule, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
-import { ConfirmDialogService } from '../../core/services/confirm-dialog/confirm-dialog.service';
-import { AuthService } from '../../core/services/auth/auth.service';
-import { RoomService } from '../../core/services/room/room.service';
+import { ConfirmDialogService } from '../../../core/services/confirm-dialog/confirm-dialog.service';
+import { AuthService } from '../../../core/services/auth/auth.service';
+import { RoomService } from '../../../core/services/room/room.service';
 
 @Component({
   selector: 'app-room-details',

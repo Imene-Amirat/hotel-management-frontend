@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { ReservationService } from '../../core/services/reservation/reservation.service';
+import { ReservationService } from '../../../core/services/reservation/reservation.service';
 import { CommonModule } from '@angular/common';
-import { Reservation } from '../../shared/models/reservation';
-import { EnglishDatePipe } from '../../shared/pipes/english-date.pipe';
+import { Reservation } from '../../../shared/models/reservation';
+import { EnglishDatePipe } from '../../../shared/pipes/english-date.pipe';
 import { Router } from '@angular/router';
 
 @Component({
