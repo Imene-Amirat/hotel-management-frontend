@@ -1,24 +1,54 @@
 import { Routes } from '@angular/router';
 import { authRoutes } from './features/auth/auth.routes';
-import { HomeComponent } from './features/home/home.component';
-import { RoomDetailsComponent } from './features/room-details/room-details.component';
-import { RoomsComponent } from './features/rooms/rooms.component';
-import { ReservationConfirmComponent } from './features/reservation-confirm/reservation-confirm.component';
-import { ReservationPaymentComponent } from './features/reservation-payment/reservation-payment.component';
-import { MyReservationsComponent } from './features/my-reservations/my-reservations.component';
-import { HotelFeaturesComponent } from './features/hotel-features/hotel-features.component';
-import { FeatureDetailsComponent } from './features/feature-details/feature-details.component';
-import { AboutComponent } from './features/about/about.component';
+import { UserLayoutComponent } from './layouts/user-layout/user-layout.component';
+import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 
 export const routes: Routes = [
-    ...authRoutes,   //take everything inside authRoutes array and insert it here
-    {path: '', component: HomeComponent}, //default route
-    {path: 'rooms/:id', component: RoomDetailsComponent},
-    {path: 'rooms', component: RoomsComponent}, 
-    {path: 'reservation/confirm', component: ReservationConfirmComponent},
-    {path: 'reservation/:id/payement', component: ReservationPaymentComponent},
-    {path: 'reservations', component: MyReservationsComponent},
-    {path: 'features', component: HotelFeaturesComponent},
-    {path: 'features/:id', component: FeatureDetailsComponent},
-    {path: 'about', component: AboutComponent}
+  ...authRoutes,   //take everything inside authRoutes array and insert it here
+  {
+    path: '',
+    component: UserLayoutComponent,
+    children: [
+      {
+        path: '',
+        loadComponent: () => import('./features/home/home.component').then(m => m.HomeComponent)
+      },
+      {
+        path: 'rooms/:id',
+        loadComponent: () => import('./features/room-details/room-details.component').then(m => m.RoomDetailsComponent)
+      },
+      {
+        path: 'rooms',
+        loadComponent: () => import('./features/rooms/rooms.component').then(m => m.RoomsComponent)
+      },
+      {
+        path: 'reservation/confirm',
+        loadComponent: () => import('./features/reservation-confirm/reservation-confirm.component').then(m => m.ReservationConfirmComponent)
+      },
+      {
+        path: 'reservation/:id/payement',
+        loadComponent: () => import('./features/reservation-payment/reservation-payment.component').then(m => m.ReservationPaymentComponent)
+      },
+      {
+        path: 'reservations',
+        loadComponent: () => import('./features/my-reservations/my-reservations.component').then(m => m.MyReservationsComponent)
+      },
+      {
+        path: 'features',
+        loadComponent: () => import('./features/hotel-features/hotel-features.component').then(m => m.HotelFeaturesComponent)
+      },
+      {
+        path: 'features/:id',
+        loadComponent: () => import('./features/feature-details/feature-details.component').then(m => m.FeatureDetailsComponent)
+      },
+      {
+        path: 'about',
+        loadComponent: () => import('./features/about/about.component').then(m => m.AboutComponent)
+      }
+    ]
+  },
+  {
+    path:'',
+    component: AdminLayoutComponent
+  }
 ];
