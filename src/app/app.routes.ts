@@ -48,7 +48,13 @@ export const routes: Routes = [
     ]
   },
   {
-    path:'',
-    component: AdminLayoutComponent
+    path:'admin',
+    component: AdminLayoutComponent,
+    children: [
+      {
+        path: 'dashboard',
+        loadComponent: () => import('./features/admin/dashborad/dashborad.component').then(m => m.DashboradComponent)
+      }
+    ]
   }
 ];
