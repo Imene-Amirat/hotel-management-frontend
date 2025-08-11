@@ -5,15 +5,17 @@
 >
   <!-- Sidebar header with SVG logo -->
   <div class="relative h-15 border-b flex items-center justify-center">
-    <!-- Logo SVG -->
-    <div class="w-20 h-auto w-auto p-4 overflow-hidden text-deep-rose text-2xl font-extrabold cursor-pointer">
+    <!-- Logo -->
+    <div
+      class="w-20 h-auto w-auto p-4 overflow-hidden text-deep-rose text-2xl font-extrabold cursor-pointer"
+    >
       HotelRoyal
     </div>
 
     <!-- Collapse Button -->
     <button
       (click)="onToggle()"
-      class="absolute right-4 top-4 text-red-900 hover:text-indigo-600 hover:bg-gray-100 rounded-full p-2 transition cursor-pointer"
+      class="absolute right-4 top-4 text-red-900 hover:text-deep-rose-600 hover:bg-gray-100 rounded-full p-2 transition cursor-pointer"
     >
       <i class="pi pi-angle-left"></i>
     </button>
@@ -24,19 +26,39 @@
     <ul class="space-y-2 text-sm">
       <li>
         <a
-          routerLink="/"
+          routerLink="dashboard"
           routerLinkActive="!text-indigo-700 !bg-indigo-50 font-medium"
-          class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-indigo-50 hover:text-indigo-700 transition cursor-pointer"
+          class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-light-rose hover:text-deep-rose transition cursor-pointer"
         >
-          <i class="pi pi-home text-lg"></i>
+          <i class="pi pi-objects-column text-base"></i>
           <span>dashboard</span>
+        </a>
+      </li>
+      <li>
+        <a
+          routerLink="users"
+          routerLinkActive="!text-indigo-700 !bg-indigo-50 font-medium"
+          class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-light-rose hover:text-deep-rose transition cursor-pointer"
+        >
+          <i class="pi pi-users text-lg"></i>
+          <span>Users</span>
         </a>
       </li>
       <li>
         <a
           routerLink="/settings"
           routerLinkActive="!text-indigo-700 !bg-indigo-50 font-medium"
-          class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-indigo-50 hover:text-indigo-700 transition cursor-pointer"
+          class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-light-rose hover:text-deep-rose transition cursor-pointer"
+        >
+          <i class="pi pi-home text-lg"></i>
+          <span>Rooms</span>
+        </a>
+      </li>
+      <li>
+        <a
+          routerLink="/settings"
+          routerLinkActive="!text-indigo-700 !bg-indigo-50 font-medium"
+          class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-light-rose hover:text-deep-rose transition cursor-pointer"
         >
           <i class="pi pi-cog text-lg"></i>
           <span>settings</span>
@@ -48,18 +70,11 @@
   <!-- Sidebar footer (sticks to bottom) -->
   <div class="border-t p-4">
     <ul class="space-y-3">
-      <ng-container >
+      <ng-container>
         <li>
           <button
-            class="w-full btn-sm text-gray-800 bg-indigo-50 hover:bg-indigo-200 shadow-sm cursor-pointer"   
-          >
-          </button>
-        </li>
-        <li>
-          <button
-            class="w-full btn-sm text-gray-800 bg-indigo-200 hover:bg-indigo-400 shadow-sm cursor-pointer"
-          >
-          </button>
+            class="w-full btn-sm text-gray-800 bg-indigo-50 hover:bg-indigo-200 shadow-sm cursor-pointer"
+          ></button>
         </li>
       </ng-container>
     </ul>

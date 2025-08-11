@@ -9,4 +9,9 @@ import { Component } from '@angular/core';
 })
 export class DashboradComponent {
 
+  constructor() { }
+
+  ngOnInit() {
+    // Initialization logic can go here
+  }
 }
