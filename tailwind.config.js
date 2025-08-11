@@ -7,6 +7,7 @@ module.exports = {
     extend: {
       colors: {
         'deep-rose': '#660033',
+        'light-rose': '#fccbd95e',
       }
     },
   },
