@@ -60,6 +60,10 @@ export const routes: Routes = [
         loadComponent: () => import('./features/admin/rooms/rooms.component').then(m => m.RoomsComponent)
       },
       {
+        path: 'room-types',
+        loadComponent: () => import('./features/admin/room-types/room-types.component').then(m => m.RoomTypesComponent)
+      },
+      {
         path: 'users',
         loadComponent: () => import('./features/admin/users/users.component').then(m => m.UsersComponent)
       }

@@ -6,6 +6,7 @@ import { RoomGallery } from '../../../shared/models/roomGallery';
 @Injectable({
   providedIn: 'root'
 })
+
 export class RoomService {
 
   private readonly API_URL = 'http://localhost:8080/api/rooms'; 

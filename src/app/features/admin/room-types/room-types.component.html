@@ -1,5 +1,5 @@
 <div class="p-6 bg-white rounded-lg shadow-md relative">
-  <h1 class="text-2xl font-semibold text-gray-800">Rooms</h1>
+  <h1 class="text-2xl font-semibold text-gray-800">Room Types</h1>
 
   <div class="static overflow-x-auto bg-white shadow sm:rounded-lg">
     <table class="min-w-full divide-y divide-gray-200 border border-gray-200">
@@ -13,17 +13,37 @@
           <th
             class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
           >
-            Room Number
+            Cover
           </th>
           <th
             class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
           >
-            Room Type
+            Name
           </th>
           <th
             class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
           >
-            Status
+            Bed Type
+          </th>
+          <th
+            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+          >
+            Capacity
+          </th>
+          <th
+            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+          >
+            Size (m²)
+          </th>
+          <th
+            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+          >
+            Price / Night
+          </th>
+          <th
+            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+          >
+            Amenities
           </th>
           <th
             class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
@@ -38,16 +58,26 @@
         </tr>
       </thead>
       <tbody class="bg-white divide-y divide-gray-200">
+        <!-- Row 1 -->
         <tr>
           <td class="px-6 py-4 text-sm text-gray-900">1</td>
-          <td class="px-6 py-4 text-sm text-gray-900">101</td>
-          <td class="px-6 py-4 text-sm text-gray-900">Deluxe Suite</td>
           <td class="px-6 py-4">
-            <span
-              class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"
-            >
-              AVAILABLE
-            </span>
+            <img
+              src="./../../../../assets/images/room1.webp"
+              alt="Deluxe Suite"
+              class="w-14 h-14 object-cover rounded"
+            />
+          </td>
+          <td class="px-6 py-4 text-sm text-gray-900">Deluxe Suite</td>
+          <td class="px-6 py-4 text-sm text-gray-900">King Bed</td>
+          <td class="px-6 py-4 text-sm text-gray-900">2 Adults, 1 Child</td>
+          <td class="px-6 py-4 text-sm text-gray-900">45</td>
+          <td class="px-6 py-4 text-sm text-gray-900">€120.00</td>
+          <td class="px-6 py-4 text-sm">
+            <i class="pi pi-snowflake text-emerald-600 mr-2" title="AC"></i>
+            <i class="pi pi-building text-emerald-600 mr-2" title="Balcony"></i>
+            <i class="pi pi-wifi text-emerald-600 mr-2" title="WiFi"></i>
+            <i class="pi pi-desktop text-emerald-600" title="TV"></i>
           </td>
           <td class="px-6 py-4">
             <span
@@ -66,16 +96,24 @@
           </td>
         </tr>
 
+        <!-- Row 2 -->
         <tr>
           <td class="px-6 py-4 text-sm text-gray-900">2</td>
-          <td class="px-6 py-4 text-sm text-gray-900">102</td>
-          <td class="px-6 py-4 text-sm text-gray-900">Standard Room</td>
           <td class="px-6 py-4">
-            <span
-              class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800"
-            >
-              OCCUPIED
-            </span>
+            <img
+              src="./../../../../assets/images/room2.webp"
+              alt="Standard Room"
+              class="w-14 h-14 object-cover rounded"
+            />
+          </td>
+          <td class="px-6 py-4 text-sm text-gray-900">Standard Room</td>
+          <td class="px-6 py-4 text-sm text-gray-900">Double Bed</td>
+          <td class="px-6 py-4 text-sm text-gray-900">2 Adults</td>
+          <td class="px-6 py-4 text-sm text-gray-900">30</td>
+          <td class="px-6 py-4 text-sm text-gray-900">€80.00</td>
+          <td class="px-6 py-4 text-sm">
+            <i class="pi pi-wifi text-emerald-600 mr-2" title="WiFi"></i>
+            <i class="pi pi-desktop text-emerald-600" title="TV"></i>
           </td>
           <td class="px-6 py-4">
             <span
@@ -94,16 +132,26 @@
           </td>
         </tr>
 
+        <!-- Row 3 -->
         <tr>
           <td class="px-6 py-4 text-sm text-gray-900">3</td>
-          <td class="px-6 py-4 text-sm text-gray-900">103</td>
-          <td class="px-6 py-4 text-sm text-gray-900">Family Suite</td>
           <td class="px-6 py-4">
-            <span
-              class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800"
-            >
-              MAINTENANCE
-            </span>
+            <img
+              src="./../../../../assets/images/room3.webp"
+              alt="Family Suite"
+              class="w-14 h-14 object-cover rounded"
+            />
+          </td>
+          <td class="px-6 py-4 text-sm text-gray-900">Family Suite</td>
+          <td class="px-6 py-4 text-sm text-gray-900">Queen Beds</td>
+          <td class="px-6 py-4 text-sm text-gray-900">4 Adults, 2 Children</td>
+          <td class="px-6 py-4 text-sm text-gray-900">60</td>
+          <td class="px-6 py-4 text-sm text-gray-900">€150.00</td>
+          <td class="px-6 py-4 text-sm">
+            <i class="pi pi-snowflake text-emerald-600 mr-2" title="AC"></i>
+            <i class="pi pi-wifi text-emerald-600 mr-2" title="WiFi"></i>
+            <i class="pi pi-desktop text-emerald-600 mr-2" title="TV"></i>
+            <i class="pi pi-home text-emerald-600" title="Terrace"></i>
           </td>
           <td class="px-6 py-4">
             <span
